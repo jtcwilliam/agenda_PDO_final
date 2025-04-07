@@ -7,6 +7,7 @@ date_default_timezone_set('America/Sao_Paulo');
 include_once 'includes/head.php';
 
 session_start();
+ 
 
 $dadoTipoPessoa =     $_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'];
 $responsavelPessoa =   $_SESSION['usuarioLogado']['dados'][0]['idUnidade'];

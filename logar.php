@@ -23,14 +23,14 @@ include_once 'includes/head.php'
                 <div class="grid-x grid-padding-x" id="loginCPF">
                     <div class="small-12 large-12 cell">
                         <label style="font-weight: bold;">
-                            <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf" />
+                            <input type="text" placeholder="Digite aqui seu Usuario" class="usuario" id="usuario"  value="williamferreira"/>
                         </label>
 
                     </div>
 
                     <div class="small-12 large-12 cell">
                         <label style="font-weight: bold;">
-                            <input type="password" placeholder="Digite sua Senha" id="pwd" />
+                            <input type="password" placeholder="Digite sua Senha" id="pwd" value="326890658@Bc" />
                         </label>
                         <a class="button succes" href="#" onclick="consultarAcesso()" style="width: 100%;">Acessar Area Administrativa</a>
                         <br>
@@ -84,7 +84,7 @@ include_once 'includes/head.php'
         function consultarAcesso() {
 
             var formData = {
-                cpf: $('#cpf').val(),
+                usuario: $('#usuario').val(),
                 pwd: $('#pwd').val()
             };
             var condicao;
@@ -96,6 +96,8 @@ include_once 'includes/head.php'
                     encode: true
                 })
                 .done(function(data) {
+
+                    console.log(data);
 
                    
 

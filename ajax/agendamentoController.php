@@ -40,8 +40,11 @@ if (isset($_POST['verificarHora'])) {
 
     if ($tipoExibicao == 0) {
         
+
+        echo ' <option  >Selecione um Horário</option> ';
         foreach ($comboHoras as $key => $value) { ?>
             <div class="small-12 large-12 cell">
+           
                 <?php
 
                 if ($value['idStatus'] == 7) {

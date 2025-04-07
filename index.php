@@ -237,11 +237,7 @@ include_once 'includes/head.php';
 
 
         })
-
-
-
-
-
+ 
 
         function consultarCPF() {
             var cpf = $('#cpf').val();
@@ -288,7 +284,7 @@ include_once 'includes/head.php';
                     encode: true
                 })
                 .done(function(data) {
-
+                                  
                     condicao = data.retornoCondicao.condicao;
                     if (condicao == false) {
                         //condição retornou false, a pessoa não ta cadastrada, abre o nome para gravar
@@ -343,7 +339,7 @@ include_once 'includes/head.php';
                 var condicao;
                 $.ajax({
                         type: 'POST',
-                        url: 'ajax/inserirController.php',
+                        url: 'ajax/inserirUsuarioController.php',
                         data: formData,
                         dataType: 'json',
                         encode: true

@@ -15,6 +15,9 @@ class Pessoa
     private $tipoPessoa;
     private $statusPessoa;
     private $documentoPessoa;
+    private $emailUsuario;
+    private $unidade;
+
     private $senha;
 
 
@@ -27,12 +30,12 @@ class Pessoa
     private $PdoConn;
 
 
-    
+
 
 
     //mexer na conexão para retornar os dados conexao, usuario e senha
 
- 
+
 
     function __construct()
     {
@@ -45,9 +48,9 @@ class Pessoa
 
         $this->setPdoConn($objbanco);
     }
- 
 
-   
+
+
 
     public function  pesquisarCPF($cpf)
     {
@@ -65,19 +68,18 @@ class Pessoa
             $dados = array();
 
             $row = $stmt->fetchAll();
-            $i=0;
+            $i = 0;
 
             foreach ($row as $key => $value) {
                 $dados[] = $value;
                 $retorno['condicao'] = true;
                 $retorno['dados'] = $dados;
                 $i++;
-
             }
-             
+
 
             if (empty($dados)) {
-                $retorno['condicao'] = 'false';
+                $retorno['condicao'] = false;
             }
 
             return $retorno;
@@ -102,7 +104,7 @@ class Pessoa
             $pdo = $this->getPdoConn();
 
             //$pdo = new PDO("mysql:host='" . $host . "' ;dbname='" . $db . "', '" . $user, $password);
-        //    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            //    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa) 
             values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa) ");
@@ -110,18 +112,51 @@ class Pessoa
 
 
             $stmt->bindValue(':nomePessoa',  $this->getNomePessoa(), PDO::PARAM_STR);
-            $stmt->bindValue(':tipoPessoa', $this->getTipoPessoa() , PDO::PARAM_STR );
+            $stmt->bindValue(':tipoPessoa', $this->getTipoPessoa(), PDO::PARAM_STR);
             $stmt->bindValue(':documentoPessoa', $this->getDocumentoPessoa(), PDO::PARAM_STR);
             $stmt->bindValue(':statusPessoa', $this->getStatusPessoa(), PDO::PARAM_STR);
 
-        
+
 
             if ($stmt->execute()) {
                 return true;
             }
 
 
-            print_r($stmt);
+         
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+    public function  inserirFuncionarioPrefs()
+    {
+        try {
+
+            $pdo = $this->getPdoConn();
+
+            //$pdo = new PDO("mysql:host='" . $host . "' ;dbname='" . $db . "', '" . $user, $password);
+            //    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa, emailUsuario, unidade) 
+            values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa, :emailUsuario, :unidade) ");
+
+
+
+            $stmt->bindValue(':nomePessoa',  $this->getNomePessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':tipoPessoa', $this->getTipoPessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':documentoPessoa', $this->getDocumentoPessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':statusPessoa', $this->getStatusPessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':emailUsuario', $this->getEmailUsuario(), PDO::PARAM_STR);
+            $stmt->bindValue(':unidade', $this->getUnidade(), PDO::PARAM_STR);
+
+
+
+            if ($stmt->execute()) {
+                return true;
+            }
+
+ 
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -133,29 +168,31 @@ class Pessoa
     {
 
 
-       
+
 
         try {
 
             $pdo = $this->getPdoConn();
-        
 
-          
+
 
             $stmt = $pdo->prepare("select  ps.nomePessoa as 'nome', un.nomeUnidade as 'nomeUnidade', st.descricaoStatus as 'descricaoStatus' , 
             tp.descricaoTipoPessoa as 'tipoPessoa', ps.pwd, ps.documentoPessoa  as 'documentoPessoa',  
             ps.*, st.*, tp.*, un.* from pessoas ps 
-            inner join unidade un on un.responsavelUnidade = ps.idPessoas 
+            inner join unidade un on ps.unidade = un.idUnidade
             inner join status st on st.idStatus = ps.statusPessoa  
             inner join tipoPessoa tp on tp.idTipoPessoa = ps.tipoPessoa 
-            where documentoPessoa = '" . $this->getDocumentoPessoa() . "'  and pwd= '" . $this->getSenha() . "'");
+            where emailUsuario = '" . $this->getEmailUsuario() . "'");
 
-           
             $stmt->execute();
+
+             
 
             $retorno = array();
 
             $dados = array();
+
+    
 
             $row = $stmt->fetchAll();
 
@@ -261,7 +298,7 @@ class Pessoa
     /**
      * Get the value of idUnidade
      */
-    
+
     /**
      * Get the value of sqlQuery
      */
@@ -404,7 +441,7 @@ class Pessoa
 
     /**
      * Get the value of PdoConn
-     */ 
+     */
     public function getPdoConn()
     {
         return $this->PdoConn;
@@ -414,10 +451,50 @@ class Pessoa
      * Set the value of PdoConn
      *
      * @return  self
-     */ 
+     */
     public function setPdoConn($PdoConn)
     {
         $this->PdoConn = $PdoConn;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of emailUsuario
+     */ 
+    public function getEmailUsuario()
+    {
+        return $this->emailUsuario;
+    }
+
+    /**
+     * Set the value of emailUsuario
+     *
+     * @return  self
+     */ 
+    public function setEmailUsuario($emailUsuario)
+    {
+        $this->emailUsuario = $emailUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of unidade
+     */ 
+    public function getUnidade()
+    {
+        return $this->unidade;
+    }
+
+    /**
+     * Set the value of unidade
+     *
+     * @return  self
+     */ 
+    public function setUnidade($unidade)
+    {
+        $this->unidade = $unidade;
 
         return $this;
     }
