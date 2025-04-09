@@ -189,6 +189,7 @@ include_once 'includes/head.php';
 
                         if (data.retorno == true) {
                             alert('Servidor Cadastrado com Sucesso');
+                            location.href = 'logar.php';
                         } else {
                             alert('Verifique se o Usuario e Senha, são os mesmos do seu acesso a rede da Prefeitura');
                         }
