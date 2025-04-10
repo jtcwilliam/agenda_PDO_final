@@ -18,7 +18,11 @@ include_once 'includes/head.php';
                 <h1 class="protocoloAgendamento"></h1>
                 <p class="lead"></p>
                 <h4 style="font-style: italic;"><b>Dica: </b>Anote o Número <span class='protocoloAgendamento'></span>, ou tire um print dessa tela e leve no dia do agendamento! Ela Serve de protocolo para o atendimento! </h4>
-                <h4 style="font-style: italic;"><b> Não esqueça de levar seu documento com foto para identificação!</h4>
+                <h4 style="font-style: italic;"><b> Não esqueça de levar seu documento com foto para identificação! <br>
+                        <br><a class=" button " style="width: 30%; border-radius: 16px;" href="https://portalfacil.guarulhos.sp.gov.br">Acessar o portal do Fácil</a></h4>
+
+
+
                 <img src="imgs/logoGoverno-1024x240.jpg" style="width: 60%; padding-top: 10em;" :) />
             </center>
 
@@ -125,7 +129,7 @@ include_once 'includes/head.php';
                         </div>
 
                         <div class="small-12 cell large-12">
-                            
+
                             <label> Em qual Unidade você deseja ser atendido? </label>
 
                             <select id="selectUnidade" onchange="$('.comboHorarios').html('<option value=\'0\'>Selecione o dia acima para ver os horários</option>')   ;datasNaUnidade(0,0)">
@@ -162,12 +166,12 @@ include_once 'includes/head.php';
                         <div class="small-12 cell large-12">
                             <Br>
 
-                            <a class="button  " onclick="registrarAgendamento()"  id="concluirDIV"
+                            <a class="button  " onclick="registrarAgendamento()" id="concluirDIV"
                                 style="width: 100%; background-color: #28536b; color: white;">
                                 Concluir Agendamento
                             </a>
 
-                          
+
 
                         </div>
 
@@ -237,7 +241,7 @@ include_once 'includes/head.php';
 
 
         })
- 
+
 
         function consultarCPF() {
             var cpf = $('#cpf').val();
@@ -284,7 +288,7 @@ include_once 'includes/head.php';
                     encode: true
                 })
                 .done(function(data) {
-                                  
+
                     condicao = data.retornoCondicao.condicao;
                     if (condicao == false) {
                         //condição retornou false, a pessoa não ta cadastrada, abre o nome para gravar
