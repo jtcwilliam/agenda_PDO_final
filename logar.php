@@ -23,14 +23,14 @@ include_once 'includes/head.php'
                 <div class="grid-x grid-padding-x" id="loginCPF">
                     <div class="small-12 large-12 cell">
                         <label style="font-weight: bold;">
-                            <input type="text" placeholder="Digite aqui seu Usuario" class="usuario" id="usuario"  value="williamferreira"/>
+                            <input type="text" placeholder="Digite aqui seu Usuario (o mesmo da rede)" class="usuario" id="usuario"  value="" />
                         </label>
 
                     </div>
 
                     <div class="small-12 large-12 cell">
                         <label style="font-weight: bold;">
-                            <input type="password" placeholder="Digite sua Senha" id="pwd" value="326890658@Bc" />
+                            <input type="password" placeholder="Digite sua Senha (a mesma da rede)" id="pwd" value="" />
                         </label>
                         <a class="button succes" href="#" onclick="consultarAcesso()" style="width: 100%;">Acessar Area Administrativa</a>
                         <br>
