@@ -13,6 +13,11 @@ class Adm
     private $pwd;
 
 
+    private $PdoConn;
+
+
+
+
     //mexer na conexão para retornar os dados conexao, usuario e senha
 
 
@@ -22,37 +27,19 @@ class Adm
         //criar uma instancia de conexao;
         $objConectar = new Conexao();
 
-
-
-        //  $dsn = 'mysql:dbname=dbagenddev;host=dbagenddev.mysql.dbaas.com.br';
-
-
-
         //chamar o metdo conectar
-        $banco = $objConectar->Conectar();
+        $objbanco = $objConectar->ConectarPDO();
 
-        $dns = 'mysql:dbname=' . $objConectar->getDb() . ';host=' . $objConectar->getHost();
-
-        //criar uma instancia dessa nova conexao
-        $this->setConexao($banco);
-
-        $this->setDns($dns);
-
-        $this->setUser($objConectar->getUser());
-
-        $this->setPwd($objConectar->getPwd());
+        $this->setPdoConn($objbanco);
     }
+
 
     public function  inserirAgendamento($todos)
     {
         try {
 
 
-
-            $pdo = new PDO($this->getDns(), $this->getUser(), $this->getPwd());
-
-            //$pdo = new PDO("mysql:host='" . $host . "' ;dbname='" . $db . "', '" . $user, $password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo = $this->getPdoConn();
 
             $sql = ('INSERT INTO   agendamento  ( dia ,  hora ,  idUnidade ,    idStatus ,    idTipoAgendamento ) 
                                                         VALUES(:dia, :hora, :idUnidade,  :idStatus,  :idTipoAgendamento )');
@@ -81,6 +68,10 @@ class Adm
                     $contador--;
                 }
             }
+
+
+      
+
             if ($contador == $qtdeElementos) {
 
                 return true;
@@ -169,6 +160,26 @@ class Adm
     public function setPwd($pwd)
     {
         $this->pwd = $pwd;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of PdoConn
+     */
+    public function getPdoConn()
+    {
+        return $this->PdoConn;
+    }
+
+    /**
+     * Set the value of PdoConn
+     *
+     * @return  self
+     */
+    public function setPdoConn($PdoConn)
+    {
+        $this->PdoConn = $PdoConn;
 
         return $this;
     }
