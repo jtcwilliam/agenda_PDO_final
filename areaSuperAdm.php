@@ -91,38 +91,48 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
                     <form action="#">
                         <div class="grid-x grid-padding-x">
 
-                            <div class="small-12 large-2 cell">
+                            <div class="small-12 large-3 cell">
                                 <label for="selectUnidade"> Unidade</label>
                                 <select id="selectUnidade" style="height: 2.8em;"> </select>
 
                             </div>
 
 
-                            <div class="small-12 large-2 cell">
-                                <label for="dataAgendamento"> Data
+                            <div class="small-12 large-3 cell">
+                                <label for="dataAgendamento"> Data Inicial
                                     <input type="text" class="datepicker" id="dataAgendamento" style="height: 2.8em;" required />
                                 </label>
                             </div>
 
-                            <div class="small-12 large-2 cell">
+                            <div class="small-12 large-3 cell">
+                                <label for="dataAgendamento"> Data Final
+                                    <input type="text" class="datepicker" id="dataFinal" style="height: 2.8em;" required />
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <div class="grid-x grid-padding-x">
+
+                            <div class="small-12 large-3 cell">
                                 <label for="primeiroHorario"> Primeiro Horário
                                     <input type="number" class="" id="primeiroHorario" style="height: 2.8em;" required />
                                 </label>
                             </div>
 
-                            <div class="small-12 large-2 cell">
+                            <div class="small-12 large-3 cell">
                                 <label for="ultimoHorario">Ultimo Horário
                                     <input type="number" class="" id="ultimoHorario" style="height: 2.8em;" required />
                                 </label>
                             </div>
 
-                            <div class="small-12 large-2 cell">
+                            <div class="small-12 large-3 cell">
                                 <label for="qtdeMesas">Quantas Mesas
                                     <input type="number" id="qtdeMesas" style="height: 2.8em;" />
                                 </label>
                             </div>
 
-                            <div class="small-12 large-2 cell">
+                            <div class="small-12 large-3 cell">
                                 <label for="qtdeMesas">&nbsp;<br>
                                     <input type="submit" class="button fundoBotoesTopo "
                                         style="height: 3em; width: 100%; color: white; font-weight: bold;" id="enviarHorarios" onclick="preencherHorarios()" value="Cadastrar" />
@@ -179,17 +189,21 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
         //parte para preencher os horários
         function preencherHorarios() {
 
-            $('#enviarHorarios').prop('disabled', true);
+        //    $('#enviarHorarios').prop('disabled', true);
 
             var horario = $('#ultimoHorario').val();
 
+            //dataFinal
+
             var dataAgendamento = $('#dataAgendamento').val();
+
+            var dataFinal = $('#dataFinal').val();
 
             var primeiroHorario = $('#primeiroHorario').val();
 
             var qtdeMesas = $('#qtdeMesas').val();
 
-            if (horario.length == 0 || dataAgendamento.length == 0 || primeiroHorario.length == 0 || qtdeMesas.length == 0) {
+            if (dataFinal.length == 0 ||    horario.length == 0 || dataAgendamento.length == 0 || primeiroHorario.length == 0 || qtdeMesas.length == 0) {
 
                 alert("Por Favor, preencha todos os dados");
 
@@ -199,6 +213,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
             var formData = {
                 inserirHorarios: 1,
                 dataAgendamento: $('#dataAgendamento').val(),
+                dataFinal:dataFinal,
                 primeiroHorario: $('#primeiroHorario').val(),
                 ultimoHorario: $('#ultimoHorario').val(),
                 qtdeMesas: $('#qtdeMesas').val(),
@@ -210,7 +225,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
                     type: 'POST',
                     url: 'ajax/horarioController.php',
                     data: formData,
-                    dataType: 'json',
+                    dataType: 'html',
                     encode: true
                 })
                 .done(function(data) {
@@ -240,7 +255,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
                         alert('Tente novamente em poucos minutos');
                     }
                     setTimeout(() => {
-                        $('#enviarHorarios').attr("disabled", false);
+                    //    $('#enviarHorarios').attr("disabled", false);
                     }, 3600);
 
 
