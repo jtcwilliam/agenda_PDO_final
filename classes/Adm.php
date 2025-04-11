@@ -53,7 +53,8 @@ class Adm
             foreach ($todos as $key => $value) {
 
 
-                $data = implode('-', array_reverse(explode('/', $value['data'])));
+                 $data =   $value['data'];
+                
 
                 $stmt->bindValue(':dia', $data, PDO::PARAM_STR);
                 $stmt->bindValue(':hora', $value['hora'], PDO::PARAM_STR);

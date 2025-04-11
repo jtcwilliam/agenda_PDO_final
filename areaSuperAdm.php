@@ -189,7 +189,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
         //parte para preencher os horários
         function preencherHorarios() {
 
-        //    $('#enviarHorarios').prop('disabled', true);
+            $('#enviarHorarios').prop('disabled', true);
 
             var horario = $('#ultimoHorario').val();
 
@@ -225,7 +225,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
                     type: 'POST',
                     url: 'ajax/horarioController.php',
                     data: formData,
-                    dataType: 'html',
+                    dataType: 'json',
                     encode: true
                 })
                 .done(function(data) {
@@ -255,7 +255,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
                         alert('Tente novamente em poucos minutos');
                     }
                     setTimeout(() => {
-                    //    $('#enviarHorarios').attr("disabled", false);
+                         $('#enviarHorarios').attr("disabled", false);
                     }, 3600);
 
 
