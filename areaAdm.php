@@ -19,6 +19,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+ 
+
 
 
 if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 4) {
