@@ -97,14 +97,41 @@ include_once 'includes/head.php'
                 })
                 .done(function(data) {
 
-                    console.log(data);
+                   
 
                    
 
                     condicao = data.retorno;
+
+                    console.log(condicao);
+
+
+
+
+                    if (data.retorno === false) {
+                        console.log('erro');
+
+                    } else {
+                        //condição retornou true, então pode seguir para o agendamento. ta fa
+
+                        alert('sdsds');
+
+                        $('#loginCPF').hide();
+                        $('#confirmacao').delay('fast').fadeIn();
+
+                        $('#mensagemConfirmacao').html('<b>Olá.</b> <br>Vamos te redirecionar para<br> a Área Administrativa');
+
+                        window.setTimeout(() => {
+                            window.location = endereco;
+                        }, 3600);
+
+
+
+                    }
+                    
                     tipoPessoa = data.dadosUsuario.dados[0]['idTipoPessoa'];
 
-                    console.log(tipoPessoa);
+                    
                     
 
 
@@ -128,27 +155,7 @@ include_once 'includes/head.php'
 
 
 
-                    if (condicao == false) {
-                        //condição retornou false, a pessoa não ta cadastrada, abre o nome para gravar
-                        $('#loginCPF').hide();
-                        $('#confirmacao').delay('fast').fadeIn();
-                        $('#mensagemConfirmacao').html('<b>Olá.</b> <br>Olá. Acesso negado!');
-
-                    } else {
-                        //condição retornou true, então pode seguir para o agendamento. ta fa
-
-                        $('#loginCPF').hide();
-                        $('#confirmacao').delay('fast').fadeIn();
-
-                        $('#mensagemConfirmacao').html('<b>Olá.</b> <br>Vamos te redirecionar para<br> a Área Administrativa');
-
-                        window.setTimeout(() => {
-                            window.location = endereco;
-                        }, 3600);
-
-
-
-                    }
+                  
 
 
                 });
