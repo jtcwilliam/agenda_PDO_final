@@ -23,7 +23,7 @@ include_once 'includes/head.php'
                 <div class="grid-x grid-padding-x" id="loginCPF">
                     <div class="small-12 large-12 cell">
                         <label style="font-weight: bold;">
-                            <input type="text" placeholder="Digite aqui seu Usuario (o mesmo da rede)" class="usuario" id="usuario"  value="" />
+                            <input type="text" placeholder="Digite aqui seu Usuario (o mesmo da rede)" class="usuario" id="usuario" value="" />
                         </label>
 
                     </div>
@@ -97,24 +97,19 @@ include_once 'includes/head.php'
                 })
                 .done(function(data) {
 
-                   
-
-                   
-
                     condicao = data.retorno;
 
                     console.log(condicao);
 
-
-
-
                     if (data.retorno === false) {
-                        console.log('erro');
+
+                        alert("Acesso negado! Verifique seu Usuário ou sua Senha");
+                        $('#usuario').val("");
+                        $('#pwd').val("");
+
 
                     } else {
                         //condição retornou true, então pode seguir para o agendamento. ta fa
-
-                        alert('sdsds');
 
                         $('#loginCPF').hide();
                         $('#confirmacao').delay('fast').fadeIn();
@@ -125,14 +120,9 @@ include_once 'includes/head.php'
                             window.location = endereco;
                         }, 3600);
 
-
-
                     }
-                    
-                    tipoPessoa = data.dadosUsuario.dados[0]['idTipoPessoa'];
 
-                    
-                    
+                    tipoPessoa = data.dadosUsuario.dados[0]['idTipoPessoa'];
 
 
                     switch (tipoPessoa) {
@@ -142,7 +132,7 @@ include_once 'includes/head.php'
                         case 4:
                             endereco = "areaAdm.php";
                             break;
-                            case 3:
+                        case 3:
                             endereco = "baixarSenhas.php";
                             break;
 
@@ -151,12 +141,6 @@ include_once 'includes/head.php'
                             endereco = "areaAdm.php";
 
                     }
-
-
-
-
-                  
-
 
                 });
             event.preventDefault();
