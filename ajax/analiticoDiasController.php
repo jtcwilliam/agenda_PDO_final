@@ -60,7 +60,7 @@ if (isset($_POST['analiseDeDias_pesquisa'])) {
 
                     <h6><b>Hora</b>: <?= $value['hora'] . 'h00'   ?></h6>
                     <h6><b>Dia</b>: <?= $value['dia']   ?><br></h6>
-                    <h6><b>Doc</b>: <?= $value['documentoPessoa'] ?></h6>
+                    <h6><b>Doc</b>: <?= $value['prefixoDoc'] ?></h6>
 
                     </p>
                 </div>
@@ -276,12 +276,12 @@ if (isset($_POST['datasAnaliticoAdmSintetico'])) {
         <div class="   small-12 large-3 cell">
             <a onclick="consultarDados_individual('<?= $value['documentoPessoa'] ?>',  '<?= $value['idAgendamento']  ?> ')" class="button" href="#" style="width: 100%; <?= $color ?>; text-align: left; color: <?= $texto ?>">
                 <?php echo  'Protocolo: ' . $value['idAgendamento']  ?><br><br>
-                <?php echo  'Agendamento: ' . $value['descricaoStatus']  ?><br><br>
+                <?php echo  'nome: ' . $value['nomePessoa']  ?><br><br>
 
-                <?php echo  'Atendimento: ' . $value['tipoAtendimento']  ?><br><br>
+                
 
                 <?php echo  'Hora: ' . $value['hora'] . 'h00'  ?><br><br>
-                <?php echo  'Documento: ' . $value['documentoPessoa']  ?>
+                <?php echo  'Documento: ' . $value['prefixoDoc']  ?>
             </a>
 
 

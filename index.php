@@ -71,7 +71,7 @@ include_once 'includes/head.php';
                                     <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf"
                                         onkeydown="mudarMascara(this.value)" required />
                                 </label>
-                                <input type="submit" class="button succes" href="#" onclick="consultarCPF()"
+                                <input type="submit" class="button succes" href="#" onclick="consultarCPF($('#cpf').val(),0 )"
                                     style="width: 100%;" value="consultar">
                                 <br>
                             </form>
@@ -243,9 +243,14 @@ include_once 'includes/head.php';
         })
 
 
-        function consultarCPF() {
-            var cpf = $('#cpf').val();
+        function consultarCPF(cpf, validador) {
 
+
+            alert(cpf);
+          
+
+           
+           
             if (cpf.length == 0 || cpf.length == 1) {
                 alert('insira o seu cpf ou cnpj');
                 return false;
@@ -274,6 +279,10 @@ include_once 'includes/head.php';
 
                 }
             }
+
+            
+        
+        console.log(validador);
 
             var formData = {
                 cpf: cpf
@@ -304,7 +313,7 @@ include_once 'includes/head.php';
 
 
                         $('#txtNome').val(data.retornoCondicao.dados[0].nomePessoa);
-                        $('#txtCPF').val(data.retornoCondicao.dados[0].documentoPessoa);
+                        $('#txtCPF').val(cpf);
                         $('#txtIdUsuario').val(data.retornoCondicao.dados[0].idPessoas);
 
                         comboUnidadesComum();
@@ -324,6 +333,7 @@ include_once 'includes/head.php';
         function inserirUsuario() {
 
             var nomeUsuario = $('#nomeAgendamento').val();
+            var cpf = $('#cpf').val();
 
 
 
@@ -336,7 +346,7 @@ include_once 'includes/head.php';
 
 
                 var formData = {
-                    cpf: $('#cpf').val(),
+                    cpf: cpf,
                     nomeUsuario: nomeUsuario
 
                 };
@@ -350,10 +360,13 @@ include_once 'includes/head.php';
                     })
                     .done(function(data) {
 
+                        console.log(data);
+
 
 
                         if (data.retorno == true) {
-                            consultarCPF();
+                             
+                            consultarCPF(cpf, 1);
                         }
 
                     });

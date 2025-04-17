@@ -15,12 +15,11 @@ class Conexao
 
     public function Conectar()
     {
-        try {                
+        try {
             $this->setUser('dbagenddev');
             $this->setPwd('Sge@4@5');
             $this->setDb('dbagenddev');
             $this->setHost('dbagenddev.mysql.dbaas.com.br');
-        
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -29,43 +28,44 @@ class Conexao
 
     public function ConectarPDO()
     {
-        try {           
-            
+        try {
+
             /*  
 
         
 
-             //  servidor desenvolvimento
-            $user ='dbagenddev';
-            $pwd = 'Sge@4@5';
-            $db = 'dbagenddev';
-            $host = 'dbagenddev.mysql.dbaas.com.br';
+          
+
+
+            //   servidor oficial
+            $user = 'agendaf';
+            $pwd = 'agendaf';
+            $db = 'agendaf';
+            $host = 'akuma.guarulhos.sp.gov.br';
 
           
 
             */
- 
 
-         //   servidor oficial
-            $user ='agendaf';
-    $pwd = 'agendaf';
-    $db = 'agendaf';
-    $host = 'akuma.guarulhos.sp.gov.br';
- 
+               //  servidor desenvolvimento
+               $user ='dbagenddev';
+               $pwd = 'Sge@4@5';
+               $db = 'dbagenddev';
+               $host = 'dbagenddev.mysql.dbaas.com.br';
+
+
+
 
 
             $dns = 'mysql:dbname=' . $db . ';host=' . $host;
 
 
-            $pdo = new PDO($dns, $user, $pwd  , array(
+            $pdo = new PDO($dns, $user, $pwd, array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
             ));
 
             return $pdo;
-
-
-        
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -158,7 +158,7 @@ class Conexao
 
     /**
      * Get the value of pdoConn
-     */ 
+     */
     public function getPdoConn()
     {
         return $this->pdoConn;
@@ -168,7 +168,7 @@ class Conexao
      * Set the value of pdoConn
      *
      * @return  self
-     */ 
+     */
     public function setPdoConn($pdoConn)
     {
         $this->pdoConn = $pdoConn;

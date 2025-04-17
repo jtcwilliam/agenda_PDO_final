@@ -30,12 +30,18 @@ $usuario = $ldap->logar($usuario, $senha);
 if (isset($usuario['count'])  && $usuario['count'] == 1) {
 
 
+$prefixo = $_POST['cpf'];
+
+$prefixo = substr($prefixo, 0, 3);
+
+
     $objPessoaMovimentar->setNomePessoa($_POST['nomeUsuario']);
     $objPessoaMovimentar->setTipoPessoa('3');
     $objPessoaMovimentar->setStatusPessoa('1');
     $objPessoaMovimentar->setDocumentoPessoa($_POST['cpf']);
     $objPessoaMovimentar->setEmailUsuario($_POST['usuario']);
     $objPessoaMovimentar->setUnidade($selectUnidade);
+    $objPessoaMovimentar->setPrefixoDoc($prefixo);
 
 
 

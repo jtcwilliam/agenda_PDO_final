@@ -17,6 +17,7 @@ class Pessoa
     private $documentoPessoa;
     private $emailUsuario;
     private $unidade;
+    private $prefixoDoc;
 
     private $senha;
 
@@ -106,15 +107,16 @@ class Pessoa
             //$pdo = new PDO("mysql:host='" . $host . "' ;dbname='" . $db . "', '" . $user, $password);
             //    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa) 
-            values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa) ");
+            $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa, prefixoDoc) 
+            values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa, :prefixoDoc) ");
 
 
 
             $stmt->bindValue(':nomePessoa',  $this->getNomePessoa(), PDO::PARAM_STR);
             $stmt->bindValue(':tipoPessoa', $this->getTipoPessoa(), PDO::PARAM_STR);
-            $stmt->bindValue(':documentoPessoa', $this->getDocumentoPessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':documentoPessoa', md5($this->getDocumentoPessoa()), PDO::PARAM_STR);
             $stmt->bindValue(':statusPessoa', $this->getStatusPessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':prefixoDoc', $this->getPrefixoDoc(), PDO::PARAM_STR);
 
 
 
@@ -138,17 +140,18 @@ class Pessoa
             //$pdo = new PDO("mysql:host='" . $host . "' ;dbname='" . $db . "', '" . $user, $password);
             //    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa, emailUsuario, unidade) 
-            values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa, :emailUsuario, :unidade) ");
+            $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa, emailUsuario, unidade, prefixoDoc) 
+            values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa, :emailUsuario, :unidade, :prefixoDoc) ");
 
 
 
             $stmt->bindValue(':nomePessoa',  $this->getNomePessoa(), PDO::PARAM_STR);
             $stmt->bindValue(':tipoPessoa', $this->getTipoPessoa(), PDO::PARAM_STR);
-            $stmt->bindValue(':documentoPessoa', $this->getDocumentoPessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':documentoPessoa', md5($this->getDocumentoPessoa()), PDO::PARAM_STR);
             $stmt->bindValue(':statusPessoa', $this->getStatusPessoa(), PDO::PARAM_STR);
             $stmt->bindValue(':emailUsuario', $this->getEmailUsuario(), PDO::PARAM_STR);
             $stmt->bindValue(':unidade', $this->getUnidade(), PDO::PARAM_STR);
+            $stmt->bindValue(':prefixoDoc', $this->getPrefixoDoc(), PDO::PARAM_STR);
 
 
 
@@ -495,6 +498,26 @@ class Pessoa
     public function setUnidade($unidade)
     {
         $this->unidade = $unidade;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prefixoDoc
+     */ 
+    public function getPrefixoDoc()
+    {
+        return $this->prefixoDoc;
+    }
+
+    /**
+     * Set the value of prefixoDoc
+     *
+     * @return  self
+     */ 
+    public function setPrefixoDoc($prefixoDoc)
+    {
+        $this->prefixoDoc = $prefixoDoc;
 
         return $this;
     }
