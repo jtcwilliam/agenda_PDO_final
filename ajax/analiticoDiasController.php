@@ -135,7 +135,7 @@ if (isset($_POST['analiseDeDias'])) {
                 <h6><b>Nome</b>: <?= $value['nomePessoa']   ?><br></h6>
                 <h6><b>Hora</b>: <?= $value['hora'] . 'h00'   ?></h6>
                 <h6><b>Dia</b>: <?= $value['dia']   ?><br></h6>
-                <h6><b>Doc</b>: <?= $value['documentoPessoa'] ?></h6>
+                <h6><b>Doc</b>: <?= $value['prefixoDoc'] ?></h6>
                 <h5><b>Unidade: <?= $value['nomeUnidade'] ?></b></h5>
                 </p>
             </div>

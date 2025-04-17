@@ -37,21 +37,27 @@ class Conexao
           
 
 
-            //   servidor oficial
-            $user = 'agendaf';
-            $pwd = 'agendaf';
-            $db = 'agendaf';
-            $host = 'akuma.guarulhos.sp.gov.br';
+       
+
+
+  //  servidor desenvolvimento
+               $user ='dbagenddev';
+               $pwd = 'Sge@4@5';
+               $db = 'dbagenddev';
+               $host = 'dbagenddev.mysql.dbaas.com.br';
+
 
           
 
             */
 
-               //  servidor desenvolvimento
-               $user ='dbagenddev';
-               $pwd = 'Sge@4@5';
-               $db = 'dbagenddev';
-               $host = 'dbagenddev.mysql.dbaas.com.br';
+            //   servidor oficial
+                 $user = 'agendaf';
+                 $pwd = 'agendaf';
+                 $db = 'agendaf';
+                 $host = 'akuma.guarulhos.sp.gov.br';
+
+             
 
 
 
