@@ -78,6 +78,9 @@ for ($w = 0; $w <= $dias; $w++) {
 }
 
 
+
+ 
+
  
 
 
@@ -101,7 +104,11 @@ foreach ($datasInserir as $key => $value) {
         //o sistema cria o horário e insere no array
         while ($primeiroHorario <= $ultimoHorario) {
 
-            $todos['data'] =   $value;
+
+
+            //date('Y-m-d', strtotime("+$w days", strtotime($diaInicial)
+            //$todos['data'] =   $value;
+            $todos['data'] =   date('Y-m-d  '.$primeiroHorario.':00'    ,  strtotime($value));
             $todos['hora'] = $primeiroHorario;
             $todos['unidade'] = $unidade;
             $todos['status'] = 7;
@@ -118,6 +125,7 @@ foreach ($datasInserir as $key => $value) {
     }
 }
 
+ 
 
 
 

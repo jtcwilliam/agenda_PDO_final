@@ -225,7 +225,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
                     type: 'POST',
                     url: 'ajax/horarioController.php',
                     data: formData,
-                    dataType: 'json',
+                    dataType: 'html',
                     encode: true
                 })
                 .done(function(data) {
