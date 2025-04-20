@@ -17,5 +17,5 @@ if ($nome == $nome2) {
     echo 'igual';
 }else
 {
-    echo 'rerro';
+    echo 'final';
 }
