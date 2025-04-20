@@ -209,7 +209,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
         //função que o agendamento do usuario pesquisado por cpf ou cnpj
         function alterarStatusAgendamento(idAgendamento, idAcao) {
             var formData = {
-                alterarStatusAgendamento: 1,
+                consultarDados: 1,
                 idAgendamento: idAgendamento,
                 idAcao: idAcao
             };

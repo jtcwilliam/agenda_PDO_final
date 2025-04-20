@@ -43,7 +43,7 @@ include_once 'includes/head.php';
             <div class="auto cell"></div>
             <div class="small-4 cell large-2">
                 <img src="imgs/logoFacilTransparente.png" style="width: 70%; margin-top: 30px;" />
-
+                    <
 
             </div>
             <div class="auto cell"></div>
