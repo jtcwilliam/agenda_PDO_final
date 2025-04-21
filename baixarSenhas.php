@@ -7,12 +7,18 @@ date_default_timezone_set('America/Sao_Paulo');
 include_once 'includes/head.php';
 
 session_start();
- 
 
 $dadoTipoPessoa =     $_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'];
 $responsavelPessoa =   $_SESSION['usuarioLogado']['dados'][0]['idUnidade'];
 
-if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 4 && $_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 3) {
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+
+/*
+if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] = 5    || $_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 4 
+  ||  $_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 3   ) {
     echo '<center><h1>Acesso Negado</h1> <h4>Você será redirecionado para a pagina inicial</h4></center>';
 
 
@@ -30,6 +36,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
 
     exit();
 }
+    */
 
 
 
@@ -53,17 +60,20 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
 
     </div>
 
+    <div class="reveal" id="openCheckin" data-reveal style="background-color: black; border-color: black;   ">
+
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true" style="color: white;">Fechar</span>
+        </button>
+
+    </div>
+
 
 
     <?php
 
-    $tipoUsuario = $_SESSION['usuarioLogado']['dados']['0']['tipoPessoa'];
-
-    if ($tipoUsuario == '3') {
-        include_once 'includes/linksAtendente.php';
-    } else {
-        include_once 'includes/linksAdm.php';
-    }
+    ////
+    include_once 'includes/linksAdm.php';
 
     ?>
 
@@ -82,9 +92,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
 
                 <!-- liberação de datas para agendamento -->
                 <fieldset class="fieldset">
-                    <legend>
-                        <h3>Check-In do Cidadão</h3>
-                    </legend>
+                    <legend> <label>Registrar Atendimento ao cidadão</label></legend>
 
                     <form action="#">
                         <div class="grid-x grid-padding-x">
@@ -107,19 +115,8 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
                                 </label>
                             </div>
 
-                        </div>
-                        <div class="grid-x grid-padding-x">
-
-
-
-
-
-
-
                             <div class="small-12 large-7 cell">
-                                <br>
-
-                                <div class="grid-x grid-padding-x" id="agendamentosAtivosNoDia">
+                                <div class="grid-x grid-padding-x" id=" ">
 
                                 </div>
 
@@ -133,7 +130,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
                     </form>
                 </fieldset>
                 <!-- todas as datas do agendamento disponível -->
-
+               
             </div>
 
         </div>
@@ -149,12 +146,16 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
         $(document).ready(function() {
 
 
+            //
+       //
         })
 
 
 
         //função que o agendamento do usuario pesquisado por cpf ou cnpj
         function consultarDados(pesquisa) {
+
+          
             var formData = {
                 analiseDeDias: 1,
                 envioDados: pesquisa,
@@ -170,7 +171,12 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
                     encode: true
                 })
                 .done(function(data) {
-                    $('#agendamentosAtivosNoDia').html(data);
+                     console.log(data);
+                     
+
+                    $('#openCheckin').foundation('open');
+
+                    $('#openCheckin').html(data);
                 });
 
 
@@ -195,7 +201,12 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
                     encode: true
                 })
                 .done(function(data) {
-                    $('#agendamentosAtivosNoDia').html();
+
+
+
+                    $('#openCheckin').foundation('open');
+
+                    $('#openCheckin').html(data);
 
                 });
 
@@ -209,7 +220,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
         //função que o agendamento do usuario pesquisado por cpf ou cnpj
         function alterarStatusAgendamento(idAgendamento, idAcao) {
             var formData = {
-                consultarDados: 1,
+                alterarStatusAgendamento: 1,
                 idAgendamento: idAgendamento,
                 idAcao: idAcao
             };
@@ -229,7 +240,8 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5  &&  $_SESSION['
 
 
                         $('#agendamentosAtivosNoDia').html('<center><h4>Entregue a senha e encaminhe o cidadão ao atendimento</h4></center>');
-
+                        $('#openCheckin').html('<center><h4 style="color:white">Entregue a senha e encaminhe o cidadão ao atendimento</h4></center>');
+                        
                     }
 
 

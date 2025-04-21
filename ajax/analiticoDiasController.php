@@ -50,7 +50,7 @@ if (isset($_POST['analiseDeDias_pesquisa'])) {
         $mensagem = 'Atendimento Permitido';
 
     ?>
-        <div class="grid-x grid-padding-x"  >
+        <div class="grid-x grid-padding-x">
             <div class="   large-12 cell">
                 <h3 style="color: white;">Check in para atendimento</h3>
                 <div class="button" style="width: 100%; text-align: left; border-radius: 0px;  <?= $cor ?>  ;  <?= $corTexto ?>  ">
@@ -99,7 +99,9 @@ if (isset($_POST['analiseDeDias_pesquisa'])) {
 if (isset($_POST['analiseDeDias'])) {
 
 
-    
+ 
+
+
     $dadosAgendamento = $objAgendamento->verificarAgendamentoParaBaixaADM($_POST['envioDados']);
 
 
@@ -209,22 +211,24 @@ if (isset($_POST['datasAnaliticoAdmSintetico'])) {
             <div class="grid-x grid-padding-x">
 
 
+                <div class="small-12 large-3 cell"  >
+                    <a class="button" style="  font-size: 1.4em; line-height: 1.3em; color: white; width: 100%; background-color:rgb(0, 0, 0);';">Senhas para o dia<br><?= $totalizadores ?> </a><br>
+                </div>
+
 
                 <div class="small-12 large-3 cell">
-                    <a class="button" style="color: #555; width: 100%; background-color:rgb(160, 208, 231)">Agendas Disponíveis<br><?= $agendaDisponiveis ?> </a><br>
+                    <a class="button" style="font-size: 1.4em; line-height: 1.3em; color: white; width: 100%; background-color:rgb(12, 68, 94);';">Disponíveis<br><?= $agendaDisponiveis ?> </a><br>
                 </div>
 
                 <div class="small-12 large-3 cell">
-                    <a class="button" style="color: black; width: 100%;background-color:rgb(252, 202, 37); ">Aguardando Atendimento<br><?= $agendadas ?> </a><br>
+                    <a class="button" style="font-size: 1.4em; line-height: 1.3em;  color: black; width: 100%;background-color:rgb(252, 202, 37); ">Aguardando<br><?= $agendadas ?> </a><br>
                 </div>
 
                 <div class="small-12 large-3 cell">
-                    <a class="button" style="color: white; width: 100%; background-color:rgb(60, 133, 0);">Atendidos<br><?= $agendasAtendidas ?> </a><br>
+                    <a class="button" style="font-size: 1.4em; line-height: 1.3em;  color: white; width: 100%; background-color:rgb(60, 133, 0);">Atendidas<br><?= $agendasAtendidas ?> </a><br>
                 </div>
 
-                <div class="small-12 large-3 cell">
-                    <a class="button" style="color: white; width: 100%; background-color:rgb(120, 3, 81)">Agendamentos Telefonicos <br><?= $telefonicas ?> </a><br>
-                </div>
+
 
             </div>
         </fieldset>
@@ -247,7 +251,7 @@ if (isset($_POST['datasAnaliticoAdmSintetico'])) {
     foreach ($agendas as $key => $value) {
         switch ($value['idStatus']) {
             case '7':
-                $color = 'background-color:rgb(160, 208, 231);';
+                $color = 'background-color:rgb(12, 68, 94);';
                 $texto = 'white';
                 break;
 
@@ -278,9 +282,9 @@ if (isset($_POST['datasAnaliticoAdmSintetico'])) {
                 <?php echo  'Protocolo: ' . $value['idAgendamento']  ?><br><br>
                 <?php echo  'nome: ' . $value['nomePessoa']  ?><br><br>
 
-                
 
-                <?php echo  'Hora: ' . $value['hora'] . 'h00'  ?><br><br>
+
+                <?php echo  'Hora: ' . $value['horas'] ?><br><br>
                 <?php echo  'Documento: ' . $value['prefixoDoc']  ?>
             </a>
 

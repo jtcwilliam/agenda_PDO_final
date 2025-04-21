@@ -13,7 +13,7 @@ class DatasAgendamento
     private $pwd;
 
     private $pdoConn;
-    
+
     function __construct()
     {
         include_once 'conecaoPDO.php';
@@ -24,7 +24,6 @@ class DatasAgendamento
         $objbanco = $objConectar->ConectarPDO();
 
         $this->setPdoConn($objbanco);
-
     }
 
 
@@ -32,13 +31,16 @@ class DatasAgendamento
     {
         try {
 
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+
             $pdo = $this->getPdoConn();
 
             $stmt = $pdo->prepare("SELECT date_format(dia, '%d/%m/%Y')   as dia  FROM agendamento 
-            where idStatus in (7 , 3)  and dia >= CURDATE()   and idUnidade= :idUnidade group by dia  ");
+            where idStatus in (7 , 3)  and dia >= CURDATE()   and idUnidade= :idUnidade group by date_format(dia, '%d/%m/%Y')  ");
             $stmt->execute(array('idUnidade' => $data));
 
-             
+
 
             $user = $stmt->fetchAll();
 
@@ -49,47 +51,97 @@ class DatasAgendamento
     }
 
 
-    
+
 
 
     public function  trazerHorarios($data, $idUnidade)
     {
         try {
 
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+
+
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare("SELECT *,  date_format(dia, '%d/%m/%Y')   as dia  FROM agendamento WHERE date_format(dia, '%d/%m/%Y') = :diaAgendamento    
-              and idStatus in (7)   and idUnidade= :idUnidade  order by hora asc ");
-            $stmt->execute(array('diaAgendamento' => $data, 'idUnidade'=> $idUnidade));
+            if (date('d/m/Y') == $data) {
+
+                //date('H')
+                $stmt = $pdo->prepare("SELECT distinct(date_format(dia, '%H:%i  do %d/%m/%Y '))   as dia  FROM agendamento WHERE date_format(dia, '%d/%m/%Y') = :diaAgendamento    
+                and idStatus in (7)   and idUnidade= :idUnidade   and  date_format(dia, '%H')>= ".date('H')."           
+                    order by  date_format(dia, '%H:%i  do %d/%m/%Y ') asc ");
+            }else
+            {
+                $stmt = $pdo->prepare("SELECT distinct(date_format(dia, '%H:%i  do %d/%m/%Y '))   as dia  FROM agendamento WHERE date_format(dia, '%d/%m/%Y') = :diaAgendamento    
+                and idStatus in (7)   and idUnidade= :idUnidade   
+                    order by  date_format(dia, '%H:%i  do %d/%m/%Y ') asc ");
+
+            }
+
+
+
+
+            $stmt->execute(array('diaAgendamento' => $data, 'idUnidade' => $idUnidade));
 
             $user = $stmt->fetchAll();
 
-           
 
-             return $user;
+
+            return $user;
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
 
-    public function  verificarDatasNaUnidade($idUnidade)
+
+
+
+
+    public function  retornarIdAgendamento($data, $idUnidade)
     {
         try {
 
-            
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare("SELECT DATE_FORMAT(dia , '%d/%m/%Y') as dia,   idunidade  FROM agendamento where dia >= CURDATE() 
-              and  idunidade = :idunidade and idPessoa is null  group by (dia) ");
+            $stmt = $pdo->prepare("SELECT idagendamento, date_format(dia, '%H:%i  do %d/%m/%Y ')  FROM agendamento
+                         WHERE date_format(dia, '%H:%i  do %d/%m/%Y ') = :diaAgendamento and  idUnidade = :idUnidade  and idStatus = 7 limit 1 ");
+            $stmt->execute(array('diaAgendamento' => $data, 'idUnidade' => $idUnidade));
+
+            $user = $stmt->fetchAll();
+
+            return $user;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+
+
+    public function  verificarDatasNaUnidade($idUnidade)
+    {
+        try {
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
+
+
+            $pdo = $this->getPdoConn();
+
+
+
+            $stmt = $pdo->prepare("SELECT DATE_FORMAT(dia , '%d/%m/%Y') as dia,   idunidade  FROM agendamento where date_format(dia, '%H:%i   %d/%m/%Y ') > '" . date('H:i  d/m/Y') . "' 
+              and  idunidade = :idunidade and idPessoa is null  group by (DATE_FORMAT(dia , '%d/%m/%Y')) ");
             $stmt->execute(array('idunidade' => $idUnidade));
             $datasDisponiveis = $stmt->fetchAll();
 
- 
+
 
             if (empty($datasDisponiveis)) {
-                 return false;
+                return false;
             } else {
-                 
+
                 return $datasDisponiveis;
             }
         } catch (PDOException $e) {
@@ -103,6 +155,9 @@ class DatasAgendamento
     public function  trazerHorariosADM($data)
     {
         try {
+
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
 
 
             $pdo = $this->getPdoConn();
@@ -122,6 +177,9 @@ class DatasAgendamento
     public function  verificarDatasNaUnidadeADM($idUnidade)
     {
         try {
+
+            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+            date_default_timezone_set('America/Sao_Paulo');
 
             $pdo = $this->getPdoConn();
 
@@ -221,7 +279,7 @@ class DatasAgendamento
 
     /**
      * Get the value of pdoConn
-     */ 
+     */
     public function getPdoConn()
     {
         return $this->pdoConn;
@@ -231,7 +289,7 @@ class DatasAgendamento
      * Set the value of pdoConn
      *
      * @return  self
-     */ 
+     */
     public function setPdoConn($pdoConn)
     {
         $this->pdoConn = $pdoConn;

@@ -34,15 +34,11 @@
 
     //carregar combo das unidades
     function procuraHoras(dia, tipoExibicao, idUnidade) {
-
- 
-
         var formData = {
             dia: dia,
             verificarHora: 1,
             tipoExibicao: tipoExibicao,
             idUnidade: idUnidade
-
         };
         $.ajax({
                 type: 'POST',
@@ -52,12 +48,40 @@
                 encode: true
             })
             .done(function(data) {
-              
-
+                console.log(data);
                 $('.comboHorarios').html(data);
                 $('#horaDIV').show();
             });
     }
+
+
+     //trazer horários para consulta da index
+     function procuraHorasIndex(dia, tipoExibicao, idUnidade) {
+        
+        var formData = {
+            dia: dia,
+            consultaHorasIndex: 1,
+            tipoExibicao: tipoExibicao,
+            idUnidade: idUnidade
+        };
+        $.ajax({
+                type: 'POST',
+                url: 'ajax/agendamentoController.php',
+                data: formData,
+                dataType: 'html',
+                encode: true
+            })
+            .done(function(data) {
+                console.log(data);
+                $('.comboHorarios').html(data);
+                $('#horaDIV').show();
+            });
+    }
+
+
+
+
+
 
     function datasNaUnidade(tipoExibicao, idUnidade) {
         $('#aparecerDatas').html('<h4>Estamos consultando pra você</h4>');
@@ -85,7 +109,7 @@
             })
             .done(function(data) {
 
-             console.log(data);
+                console.log(data);
 
                 // <label>Selecione a data de seu agendamento
                 if (tipoExibicao == 0) {
@@ -95,7 +119,7 @@
 
                 }
 
-                
+
 
             });
     }
@@ -318,7 +342,7 @@
                 encode: true
             })
             .done(function(data) {
-                console.log(data);
+
                 $('#analiseAgendas').html(data);
             });
     }
@@ -330,7 +354,7 @@
             unidadeUsuario: unidadeUsuario
         };
 
-        
+
         $.ajax({
                 type: 'POST',
                 url: 'ajax/areaSuperAdmController.php',
@@ -339,7 +363,7 @@
                 encode: true
             })
             .done(function(data) {
-                console.log(data);
+
                 $('#analiseAgendas').html(data);
             });
     }
@@ -358,7 +382,7 @@
                 encode: true
             })
             .done(function(data) {
-                console.log(data);
+
                 $('#inforDatas').html(data);
             });
     }
@@ -378,7 +402,7 @@
                 encode: true
             })
             .done(function(data) {
-                console.log(data);
+
                 $('#inforDatas').html(data);
             });
     }
@@ -388,7 +412,7 @@
     function verificarDatasAnaliticosDaUnidade(unidadeUsuario, dataDaUnidade) {
 
         //funciona melhor para o arquivo analitico dias
-       
+
         var formData = {
             datasAnaliticoAdmSintetico: 1,
             unidadeUsuario: unidadeUsuario,
@@ -402,7 +426,7 @@
                 encode: true
             })
             .done(function(data) {
-                
+
                 $('#analiseAgendas').html(data);
             });
     }

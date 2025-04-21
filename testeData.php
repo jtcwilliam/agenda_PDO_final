@@ -1,21 +1,15 @@
 <?php
 
-$nome = 'Intadalável';
+setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+date_default_timezone_set('America/Sao_Paulo');
 
-echo $nome;
 
-exit();
+//'%H:%i  do %d/%m/%Y
 
-$nome2= md5('Intadalável');
+'13:00  21/04/2025';
 
-echo $nome.'<br>'.$nome2.'<br>';
+
+echo date('H');
 
 
  
-
-if ($nome == $nome2) {
-    echo 'igual';
-}else
-{
-    echo 'final';
-}
