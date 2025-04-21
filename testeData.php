@@ -9,6 +9,7 @@ date_default_timezone_set('America/Sao_Paulo');
 '13:00  21/04/2025';
 
 
-echo date('H:i d/m/Y');
+echo date('H');
+
 
  
