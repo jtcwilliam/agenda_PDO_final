@@ -43,7 +43,7 @@ include_once 'includes/head.php';
             <div class="auto cell"></div>
             <div class="small-4 cell large-2">
                 <img src="imgs/logoFacilTransparente.png" style="width: 70%; margin-top: 30px;" />
-                    <
+                   
 
             </div>
             <div class="auto cell"></div>
@@ -107,7 +107,7 @@ include_once 'includes/head.php';
                     <!-- aqui faz o agendamento -->
 
                     <div class="grid-x grid-padding-x" id="formularioAgendamento">
-                        <div class="small-12 cell large-12">
+                        <div class="small-12 cell large-12" style="display: none;">
                             <br>
                             <label class="labels"> CPF</label>
                             <input type="text" name="txtCPF" id="txtCPF" readonly />
@@ -146,7 +146,7 @@ include_once 'includes/head.php';
 
                         <div class="small-12 medium-12  large-12 cell" id="horaDIV">
                             <label>Que bom! Agora selecione a hora do seu Atendimento.</label>
-                            <select class="comboHorarios" onchange="$('#tipoAgendamentoDiv').show();     $('#concluirDIV').show();">
+                            <select class="comboHorarios" onchange="     $('#concluirDIV').show();">
                                 <option value="0">Não Há horários para selecionar</option>
 
                             </select>
@@ -245,9 +245,7 @@ include_once 'includes/head.php';
 
         function consultarCPF(cpf, validador) {
 
-
-            alert(cpf);
-          
+ 
 
            
            
@@ -282,7 +280,7 @@ include_once 'includes/head.php';
 
             
         
-        console.log(validador);
+ 
 
             var formData = {
                 cpf: cpf
@@ -380,6 +378,9 @@ include_once 'includes/head.php';
             var comboHorarios = $('.comboHorarios').val();
             var selectUnidade = $('#selectUnidade').val();
 
+
+         
+
             if (selectUnidade != 0) {
                 if (comboHorarios != 0) {
                     var formData = {
@@ -399,6 +400,9 @@ include_once 'includes/head.php';
                             encode: true
                         })
                         .done(function(data) {
+
+                                console.log(data);
+                                
                             if (data.retorno == true) {
                                 $('#formularioAgendamento').hide();
                                 $('#modalSucesso').foundation('open');

@@ -233,7 +233,8 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
                     if (data.retorno == true) {
 
 
-
+                        console.log(data);
+                        
 
                         $('#ultimoHorario').val('');
 

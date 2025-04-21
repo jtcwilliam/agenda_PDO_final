@@ -41,8 +41,8 @@ class Adm
 
             $pdo = $this->getPdoConn();
 
-            $sql = ('INSERT INTO   agendamento  ( dia ,  hora ,  idUnidade ,    idStatus ,    idTipoAgendamento ) 
-                                                        VALUES(:dia, :hora, :idUnidade,  :idStatus,  :idTipoAgendamento )');
+            $sql = ('INSERT INTO   agendamento  ( dia ,  idUnidade ,    idStatus ,    idTipoAgendamento ) 
+                                                        VALUES(:dia,  :idUnidade,  :idStatus,  :idTipoAgendamento )');
 
             $stmt = $pdo->prepare($sql);
 
@@ -57,7 +57,7 @@ class Adm
                 
 
                 $stmt->bindValue(':dia', $data, PDO::PARAM_STR);
-                $stmt->bindValue(':hora', $value['hora'], PDO::PARAM_STR);
+                
                 $stmt->bindValue(':idUnidade', $value['unidade'], PDO::PARAM_STR);
 
                 $stmt->bindValue(':idStatus', $value['status'], PDO::PARAM_STR);
