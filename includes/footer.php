@@ -292,7 +292,7 @@
 
 
                 //aqui muda as datas
-                if (data.qtdeAgendamentos >= 20) {
+                if (data.qtdeAgendamentos >= 2) {
                     $('#formularioAgendamento').hide();
                     $('#campoMensagemAgendamentosAtivos').show();
 
