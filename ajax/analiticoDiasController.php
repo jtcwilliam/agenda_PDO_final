@@ -277,15 +277,15 @@ if (isset($_POST['datasAnaliticoAdmSintetico'])) {
     ?>
 
 
-        <div class="   small-12 large-3 cell">
-            <a onclick="consultarDados_individual('<?= $value['documentoPessoa'] ?>',  '<?= $value['idAgendamento']  ?> ')" class="button" href="#" style="width: 100%; <?= $color ?>; text-align: left; color: <?= $texto ?>">
-                <?php echo  'Protocolo: ' . $value['idAgendamento']  ?><br><br>
-                <?php echo  'nome: ' . $value['nomePessoa']  ?><br><br>
 
 
 
-                <?php echo  'Hora: ' . $value['horas'] ?><br><br>
-                <?php echo  'Documento: ' . $value['prefixoDoc']  ?>
+
+        <div class="   small-12 large-2 cell">
+            <a onclick="consultarDados_individual('<?= $value['documentoPessoa'] ?>',  '<?= $value['idAgendamento']  ?> ')" class="button" href="#" style="  height: 5em ;line-height: 1.5em ; width: 100%; <?= $color ?>; text-align: left; color: <?= $texto ?>">
+                 
+                <?php echo  '' . $value['nomePessoa'].', às  <b>'.  $value['horas'].' </b>' ?><br>
+                 
             </a>
 
 

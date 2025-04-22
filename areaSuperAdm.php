@@ -100,7 +100,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
 
                             <div class="small-12 large-3 cell">
                                 <label for="dataAgendamento"> Data Inicial
-                                    <input type="text" class="datepicker" id="dataAgendamento" style="height: 2.8em;" required />
+                                    <input type="text" class="datepicker" id="dataAgendamento"  min="2025-04-22" style="height: 2.8em;" required />
                                 </label>
                             </div>
 
@@ -116,13 +116,13 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 5) {
 
                             <div class="small-12 large-3 cell">
                                 <label for="primeiroHorario"> Primeiro Horário
-                                    <input type="number" class="" id="primeiroHorario" style="height: 2.8em;" required />
+                                    <input type="number" class="" id="primeiroHorario" min="8" max="17" style="height: 2.8em;"  placeholder="Entre 8h e 17h "  required />
                                 </label>
                             </div>
 
                             <div class="small-12 large-3 cell">
                                 <label for="ultimoHorario">Ultimo Horário
-                                    <input type="number" class="" id="ultimoHorario" style="height: 2.8em;" required />
+                                    <input type="number" class="" id="ultimoHorario" min="8" max="17" style="height: 2.8em;" placeholder="Entre 8h e 17h " required />
                                 </label>
                             </div>
 

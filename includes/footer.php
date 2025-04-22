@@ -9,9 +9,14 @@
 
 </div>
 
+
+
+
 <script>
     $(function() {
         $(".datepicker").datepicker({
+            maxDate:  30,
+            minDate: 0,
             showOn: "focus",
             dateFormat: "dd/mm/yy",
             dayNames: ["Domingo", "Segunda", "Terça", "Quarte", "Quinta", "Sexta", "Sábado"],
@@ -55,9 +60,9 @@
     }
 
 
-     //trazer horários para consulta da index
-     function procuraHorasIndex(dia, tipoExibicao, idUnidade) {
-        
+    //trazer horários para consulta da index
+    function procuraHorasIndex(dia, tipoExibicao, idUnidade) {
+
         var formData = {
             dia: dia,
             consultaHorasIndex: 1,
