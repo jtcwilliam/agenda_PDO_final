@@ -131,7 +131,7 @@ class DatasAgendamento
 
 
 
-            $stmt = $pdo->prepare("SELECT DATE_FORMAT(dia , '%d/%m/%Y') as dia,   idunidade  FROM agendamento where date_format(dia, '%d/%m/%Y ') >= '22/04/2025' 
+            $stmt = $pdo->prepare("SELECT DATE_FORMAT(dia , '%d/%m/%Y') as dia,   idunidade  FROM agendamento where date_format(dia, '%d/%m/%Y ') >= '".date('d/m/Y')."' 
                 and  idunidade = :idunidade and idPessoa is null  group by (DATE_FORMAT(dia , '%d/%m/%Y')) ");
             $stmt->execute(array('idunidade' => $idUnidade));
             $datasDisponiveis = $stmt->fetchAll();
