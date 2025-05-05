@@ -500,7 +500,7 @@ include_once 'includes/head.php';
                     if (condicao == false) {
 
 
-                        alert('Seu acesso está incorreto')
+                        alert('Sua senha está incorreta');
 
                         $('#senhaTxt').val("");
 
