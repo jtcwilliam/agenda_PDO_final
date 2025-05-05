@@ -38,7 +38,7 @@ class Conexao
   //  servidor desenvolvimento
      
           
-                
+                   /* 
                 
                 $user ='dbagenddev';
                $pwd = 'Sge@4@5';
@@ -49,7 +49,7 @@ class Conexao
 
 
    
-                /* 
+                 */
 
           
 
@@ -61,7 +61,7 @@ class Conexao
                
 
                 
-      */
+  
              
 
 
