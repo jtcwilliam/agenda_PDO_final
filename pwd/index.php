@@ -122,7 +122,7 @@ include_once 'includes/head.php';
                                     <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
                                 </label>
 
-                                <label style="font-weight: bold;"> Digite Sua Senha
+                                <label style="font-weight: bold;"> Crie Sua Senha
                                     <input type="text" placeholder="Digite Sua Senha" id="senhaTxt" />
                                 </label>
 
@@ -183,31 +183,30 @@ include_once 'includes/head.php';
 
 
                         <div class="small-12 large-12 cell" style="display: none;" id="camposAgendamentos">
-                            <label style="font-weight: bold;"> Vamos continuar seu agendamento! Digite seu nome por
-                                favor
+                            <label style="font-weight: bold; font-size: 1.3em;"> Vamos continuar seu agendamento! Digite seu nome 
                                 <input type="text" placeholder="Digite aqui seu Aqui" class="nomeAgendamento"
                                     id="nomeAgendamento" />
                             </label>
-
+                                    <br>
                             <label style="font-weight: bold;  display: none; "> validacao tipo de usuario
-                                favor
+                                
                                 <input type="text" placeholder="Digite aqui seu  validador" class=""
                                     id="validaTipoCadastro" />
                             </label>
 
-                            <label style="font-weight: bold;" class="agendaCompleto"> Qual seu email? Vamos precisar caso você esqueça sua senha!
-                                favor
+                            <label style="font-weight: bold;  font-size: 1.3em; " class="agendaCompleto"> Qual seu email?<br>
+                                
                                 <input type="text" placeholder="Digite aqui seu  Email Aqui"
                                     id="emailAgendamento" />
                             </label>
-
-                            <label style="font-weight: bold;" class="agendaCompleto"> Digite uma senha!
-                                favor
+                            <br>
+                            <label style="font-weight: bold;  font-size: 1.3em;" class="agendaCompleto"> Digite uma senha!
+                               
                                 <input type="text" placeholder="Crie uma senha "
                                     class="senhaAgendamento" />
                             </label>
 
-
+                            <br>
 
                             <a class="button succes" href="#" onclick="inserirUsuario()" style="width: 100%;">Seguir
                                 para Agendamento</a>
