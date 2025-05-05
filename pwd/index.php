@@ -119,11 +119,11 @@ include_once 'includes/head.php';
                         <div class="small-12 large-12 cell">
                             <form action="#">
                                 <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
-                                    <input type="password" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
+                                    <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
                                 </label>
 
                                 <label style="font-weight: bold;"> Crie Sua Senha
-                                    <input type="text" placeholder="Digite Sua Senha" id="senhaTxt" />
+                                    <input type="password" placeholder="Digite Sua Senha" id="senhaTxt" />
                                 </label>
 
                                 <input type="submit" class="button succes" href="#" onclick="logarUsuarioAgendamento($('#cpf').val(), $('#senhaTxt').val()  )"
