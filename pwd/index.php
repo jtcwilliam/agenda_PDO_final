@@ -119,7 +119,7 @@ include_once 'includes/head.php';
                         <div class="small-12 large-12 cell">
                             <form action="#">
                                 <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
-                                    <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
+                                    <input type="password" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
                                 </label>
 
                                 <label style="font-weight: bold;"> Crie Sua Senha
@@ -202,7 +202,7 @@ include_once 'includes/head.php';
                             <br>
                             <label style="font-weight: bold;  font-size: 1.3em;" class="agendaCompleto"> Digite uma senha!
                                
-                                <input type="text" placeholder="Crie uma senha "
+                                <input type="password" placeholder="Crie uma senha "
                                     class="senhaAgendamento" />
                             </label>
 
