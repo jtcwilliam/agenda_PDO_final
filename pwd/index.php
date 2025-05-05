@@ -122,7 +122,7 @@ include_once 'includes/head.php';
                                     <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
                                 </label>
 
-                                <label style="font-weight: bold;"> Crie Sua Senha
+                                <label style="font-weight: bold;"> Digite sua senha para acessar!
                                     <input type="password" placeholder="Digite Sua Senha" id="senhaTxt" />
                                 </label>
 
@@ -200,7 +200,7 @@ include_once 'includes/head.php';
                                     id="emailAgendamento" />
                             </label>
                             <br>
-                            <label style="font-weight: bold;  font-size: 1.3em;" class="agendaCompleto"> Digite uma senha!
+                            <label style="font-weight: bold;  font-size: 1.3em;" class="agendaCompleto"> Crie uma senha!
                                
                                 <input type="password" placeholder="Crie uma senha "
                                     class="senhaAgendamento" />
