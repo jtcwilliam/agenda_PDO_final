@@ -30,7 +30,7 @@ class Conexao
     {
         try {
 
-            /*  
+          
 
         
 
@@ -47,9 +47,8 @@ class Conexao
                $host = 'dbagenddev.mysql.dbaas.com.br';
 
 
-          
+            /*  
 
-            */
 
             //   servidor oficial
                  $user = 'agendaf';
@@ -58,6 +57,7 @@ class Conexao
                  $host = 'akuma.guarulhos.sp.gov.br';
 
              
+            */
 
 
 

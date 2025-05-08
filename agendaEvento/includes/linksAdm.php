@@ -34,9 +34,6 @@ switch ($tipoPessoa) {
         <a class="button fundoBotoesTopo" href="<?= $link ?>"> Calendário de Agendas </b></a>
         <a class="button fundoBotoesTopo" href="baixarSenhas.php">Check in Atendimento</a>
 
-        <a class="button fundoBotoesTopo" href="report.php">Relatório </a>
-        
-
     </div>
 
 
