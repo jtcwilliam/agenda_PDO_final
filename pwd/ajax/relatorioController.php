@@ -20,7 +20,7 @@ if (isset($_POST['porDias'])) {
     //data final
     $dataFinal =  $_POST['diaFinal'];
     $dataFinal = explode('/', $dataFinal);
-    $dataFinal = $dataFinal['2'] . '-' . $dataFinal['1'] . '-' . $dataFinal['0'] . ' 00:00:00';
+    $dataFinal = $dataFinal['2'] . '-' . $dataFinal['1'] . '-' . $dataFinal['0'] . ' 23:59:59';
 
 
     $diasRetornar = $objReport->agendasEmGeral($dataInicial, $dataFinal);
