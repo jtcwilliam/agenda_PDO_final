@@ -82,7 +82,7 @@ class Agendamento
 
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare(" SELECT  *,  date_format(dia, '%d/%m/%Y') as dia from agendamento ag left join pessoas ps on ps.idPessoas = ag.idPessoa left join unidade un on ag.idUnidade = un.idUnidade
+            $stmt = $pdo->prepare(" SELECT  *, date_format(dia, '%H:00') as hora ,date_format(dia, '%d/%m/%Y') as dia from agendamento ag left join pessoas ps on ps.idPessoas = ag.idPessoa left join unidade un on ag.idUnidade = un.idUnidade
                                     inner join tipoAgendamento ta on ag.idTipoAgendamento = ta.idTipoAgendamento
                                      where   ps.documentoPessoa = :docPessoa  and ag.idAgendamento=:idAgendamento          and idstatus in(3,8)  order by  date_format(dia, '%d/%m/%Y') asc ");
 
@@ -108,7 +108,7 @@ class Agendamento
             
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare(" SELECT  *,  date_format(dia, '%d/%m/%Y') as dia from agendamento ag left join pessoas ps on ps.idPessoas = ag.idPessoa left join unidade un on ag.idUnidade = un.idUnidade
+            $stmt = $pdo->prepare(" SELECT  *,  date_format(dia, '%H:00') as hora  ,date_format(dia, '%d/%m/%Y') as dia from agendamento ag left join pessoas ps on ps.idPessoas = ag.idPessoa left join unidade un on ag.idUnidade = un.idUnidade
                                         where  ( ps.documentoPessoa = :docPessoa || idAgendamento = :docPessoa )   and idstatus in(3,8)  order by  date_format(dia, '%d/%m/%Y') asc ");
 
             $stmt->execute(array(':docPessoa' => md5($dado)));

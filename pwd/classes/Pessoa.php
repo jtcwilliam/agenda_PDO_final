@@ -20,6 +20,9 @@ class Pessoa
     private $prefixoDoc;
     private $validaTipoCadastro;
 
+    private $confirmaTermo;
+
+
     private $senha;
 
 
@@ -146,8 +149,8 @@ class Pessoa
             //$pdo = new PDO("mysql:host='" . $host . "' ;dbname='" . $db . "', '" . $user, $password);
             //    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa, prefixoDoc, validaTipoCadastro, emailUsuario, pwd   ) 
-            values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa, :prefixoDoc, :validaTipoCadastro,  :emailUsuario, :pwd ) ");
+            $stmt = $pdo->prepare("  INSERT INTO  pessoas ( nomePessoa, tipoPessoa,statusPessoa, documentoPessoa, prefixoDoc, validaTipoCadastro, emailUsuario, pwd, termoUso   ) 
+            values (:nomePessoa, :tipoPessoa, :statusPessoa, :documentoPessoa, :prefixoDoc, :validaTipoCadastro,  :emailUsuario, :pwd, :termoUso ) ");
 
             $stmt->bindValue(':nomePessoa',  $this->getNomePessoa(), PDO::PARAM_STR);
             $stmt->bindValue(':tipoPessoa', $this->getTipoPessoa(), PDO::PARAM_STR);
@@ -157,6 +160,7 @@ class Pessoa
             $stmt->bindValue(':validaTipoCadastro', $this->getValidaTipoCadastro(), PDO::PARAM_STR);
             $stmt->bindValue(':emailUsuario', $this->getEmailUsuario(), PDO::PARAM_STR);
             $stmt->bindValue(':pwd', $this->getSenha(), PDO::PARAM_STR);
+            $stmt->bindValue(':termoUso', $this->getConfirmaTermo(), PDO::PARAM_STR);
  
             if ($stmt->execute()) {
                 return true;
@@ -571,6 +575,26 @@ class Pessoa
     public function setValidaTipoCadastro($validaTipoCadastro)
     {
         $this->validaTipoCadastro = $validaTipoCadastro;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of confirmaTermo
+     */ 
+    public function getConfirmaTermo()
+    {
+        return $this->confirmaTermo;
+    }
+
+    /**
+     * Set the value of confirmaTermo
+     *
+     * @return  self
+     */ 
+    public function setConfirmaTermo($confirmaTermo)
+    {
+        $this->confirmaTermo = $confirmaTermo;
 
         return $this;
     }

@@ -48,6 +48,8 @@ if (strlen($nome) <= 2) {
     $objPessoaMovimentar->setPrefixoDoc($prefixo);
     $objPessoaMovimentar->setValidaTipoCadastro($_POST['validaTipoCadastro']);
 
+    $objPessoaMovimentar->setConfirmaTermo($_POST['confirmaTermo']);
+
 
 
  
@@ -55,5 +57,6 @@ if (strlen($nome) <= 2) {
         echo json_encode(array('retorno' => true));
     }
 
+   
  
 }

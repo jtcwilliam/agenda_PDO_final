@@ -98,7 +98,7 @@ if (isset($_POST['consultaHorasIndex'])) {
 
                     if ($value['idStatus'] == 7) {
                     ?>
-                        <option value="<?= $value['idAgendamento'] ?>"><?php echo $value['dia']   ?></option>
+                        <option value="<?=$value['idAgendamento']?>"><?=$value['dia']?></option>
                     <?php
                     } ?>
 

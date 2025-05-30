@@ -37,8 +37,7 @@ class Conexao
 
   //  servidor desenvolvimento
                     
-   /*
-          
+  
                  
                 
                 $user ='dbagenddev';
@@ -48,8 +47,9 @@ class Conexao
 
             
 
-   */
-               
+   
+             /*
+            
    
 
           
@@ -61,7 +61,7 @@ class Conexao
                  $host = 'akuma.guarulhos.sp.gov.br';
                 
 
-                
+                 */
   
              
 

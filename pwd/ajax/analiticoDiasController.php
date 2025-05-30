@@ -45,7 +45,7 @@ if (isset($_POST['analiseDeDias_pesquisa'])) {
 
 
 
-        $cor = 'background-color:rgb(79, 212, 3)';
+        $cor = 'background-color:rgb(234, 234, 234)';
         $corTexto = ' color: black;';
         $mensagem = 'Atendimento Permitido';
 
@@ -54,13 +54,12 @@ if (isset($_POST['analiseDeDias_pesquisa'])) {
             <div class="   large-12 cell">
                 <h3 style="color: white;">Check in para atendimento</h3>
                 <div class="button" style="width: 100%; text-align: left; border-radius: 0px;  <?= $cor ?>  ;  <?= $corTexto ?>  ">
-                    <p><b>Protocolo</b>: <?= $value['idAgendamento']   ?><br>
-                    <p><b>Agendamento</b>: <?= $value['tipoAtendimento']   ?><br>
-                    <h6><b>Nome</b>: <?= $value['nomePessoa']   ?><br></h6>
+                    
+                    <h5><b>Nome</b>: <?= $value['nomePessoa']   ?><br></h5>
 
-                    <h6><b>Hora</b>: <?= $value['hora'] . 'h00'   ?></h6>
+                    <h6><b>Hora</b>: <?= $value['hora']    ?></h6>
                     <h6><b>Dia</b>: <?= $value['dia']   ?><br></h6>
-                    <h6><b>Doc</b>: <?= $value['prefixoDoc'] ?></h6>
+                    <h5><b>Doc</b>: <?= $value['prefixoDoc'] ?></h5>
 
                     </p>
                 </div>
@@ -135,7 +134,7 @@ if (isset($_POST['analiseDeDias'])) {
             <div class="button" style="width: 100%; text-align: left; border-radius: 10px; background-color:#28536b ; color: white;  ">
                 <p><b>Protocolo</b>: <?= $value['idAgendamento']   ?><br>
                 <h6><b>Nome</b>: <?= $value['nomePessoa']   ?><br></h6>
-                <h6><b>Hora</b>: <?= $value['hora'] . 'h00'   ?></h6>
+                <h6><b>Hora</b>: <?= $value['hora']   ?></h6>
                 <h6><b>Dia</b>: <?= $value['dia']   ?><br></h6>
                 <h6><b>Doc</b>: <?= $value['prefixoDoc'] ?></h6>
                 <h5><b>Unidade: <?= $value['nomeUnidade'] ?></b></h5>
@@ -282,7 +281,7 @@ if (isset($_POST['datasAnaliticoAdmSintetico'])) {
 
 
         <div class="   small-12 large-2 cell">
-            <a onclick="consultarDados_individual('<?= $value['documentoPessoa'] ?>',  '<?= $value['idAgendamento']  ?> ')" class="button" href="#" style="  height: 5em ;line-height: 1.5em ; width: 100%; <?= $color ?>; text-align: left; color: <?= $texto ?>">
+            <a onclick="consultarDados_individual('<?= $value['documentoPessoa'] ?>',  '<?= $value['idAgendamento']  ?> ')" class="button" href="#" style="  height: 8em ;line-height: 1.5em ; width: 100%; <?= $color ?>; text-align: left; color: <?= $texto ?>">
                  
                 <?php echo  '' . $value['nomePessoa'].', às  <b>'.  $value['horas'].' </b>' ?><br>
                  

@@ -68,14 +68,14 @@ class DatasAgendamento
             if (date('d/m/Y') == $data) {
 
                 //date('H')
-                $stmt = $pdo->prepare("SELECT distinct(date_format(dia, '%H:%i  do %d/%m/%Y '))   as dia  FROM agendamento WHERE date_format(dia, '%d/%m/%Y') = :diaAgendamento    
+                $stmt = $pdo->prepare("SELECT distinct(date_format(dia, '%H:%i do dia %d/%m/%Y'))   as dia  FROM agendamento WHERE date_format(dia, '%d/%m/%Y') = :diaAgendamento    
                 and idStatus in (7)   and idUnidade= :idUnidade   and  date_format(dia, '%H')>= ".date('H')."           
-                    order by  date_format(dia, '%H:%i  do %d/%m/%Y ') asc ");
+                    order by  date_format(dia, '%H:%i do dia %d/%m/%Y') asc ");
             }else
             {
-                $stmt = $pdo->prepare("SELECT distinct(date_format(dia, '%H:%i  do %d/%m/%Y '))   as dia  FROM agendamento WHERE date_format(dia, '%d/%m/%Y') = :diaAgendamento    
+                $stmt = $pdo->prepare("SELECT distinct(date_format(dia, '%H:%i do dia %d/%m/%Y'))   as dia  FROM agendamento WHERE date_format(dia, '%d/%m/%Y') = :diaAgendamento    
                 and idStatus in (7)   and idUnidade= :idUnidade   
-                    order by  date_format(dia, '%H:%i  do %d/%m/%Y ') asc ");
+                    order by  date_format(dia, '%H:%i do dia %d/%m/%Y') asc ");
 
             }
 
@@ -107,8 +107,8 @@ class DatasAgendamento
 
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare("SELECT idagendamento, date_format(dia, '%H:%i  do %d/%m/%Y ')  FROM agendamento
-                         WHERE date_format(dia, '%H:%i  do %d/%m/%Y ') = :diaAgendamento and  idUnidade = :idUnidade  and idStatus = 7 limit 1 ");
+            $stmt = $pdo->prepare("SELECT idagendamento, date_format(dia, '%H:%i do dia %d/%m/%Y')  FROM agendamento
+                         WHERE date_format(dia, '%H:%i do dia %d/%m/%Y') = :diaAgendamento and  idUnidade = :idUnidade  and idStatus = 7 limit 1 ");
             $stmt->execute(array('diaAgendamento' => $data, 'idUnidade' => $idUnidade));
 
             $user = $stmt->fetchAll();
