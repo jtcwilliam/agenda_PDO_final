@@ -11,6 +11,7 @@ $objDatas = new DatasAgendamento();
 
 
 if (isset($_POST['verificarAgendamentosAtivos'])) {
+    
 
     $agendamentos = $objAgendamento->verificarAgendamentosAtivos($_POST['idPessoa'], $_POST['idStatus']);
 
@@ -18,12 +19,35 @@ if (isset($_POST['verificarAgendamentosAtivos'])) {
     $qtdeAgendamentos =  sizeof($agendamentos);
 
     $agendamentosAntigos = '';
+     $abstencao = 0;
+
+    $dataVerificadora =  date('Y-m-d');
 
     foreach ($agendamentos as $key => $value) {
-        $agendamentosAntigos .=  "<div class='small-12 cell large-12'> <div> Protocolo: " . $value['idAgendamento'] . "<br> Ás " . $value['dia'] . "  no <b>" . $value['nomeUnidade'] . "</b></div>   <hr> </div> ";
+
+        $diaComparar = $value['diaComparar'];
+
+       
+
+        if(strtotime($dataVerificadora) >  strtotime($diaComparar)   ){
+            $informacao = 'Não Compareceu!';
+            $abstencao +=1;
+
+            $agendamentosAntigos .=  "<div class='small-12 cell large-12 '  
+             style='color:red; font-weight: 400; '> <div> Agendamento com Status: <b>" .  $informacao . "</b> <br> Ás <b>" . $value['dia'] . "</b>.</div><br>Compareça a uma das
+             Unidades do Fácil para Liberar este horário   <hr> </div> ";
+        }else{
+ $informacao = 'Agendado';
+            $agendamentosAntigos .=  "<div class='small-12 cell large-12'  style='color:black; font-weight: 400; '
+            > <div> Agendamento com Status: <b>" .  $informacao . "</b> <br> Ás <b>" . $value['dia'] . "</b>. <br> <br>Compareça na unidade   <b>" . $value['nomeUnidade'] . "</b>. <br>Agradecemos seu agendamento!</div>   <hr> </div> ";
+            
+        }
+
+
+       // $agendamentosAntigos .=  "<div class='small-12 cell large-12'> <div> Protocolo: " .  $informacao . "<br> Ás " . $value['dia'] . "  no <b>" . $value['nomeUnidade'] . "</b></div>   <hr> </div> ";
     }
 
-    echo  json_encode(array('qtdeAgendamentos' => $qtdeAgendamentos, 'agendamentoAntigo' => $agendamentosAntigos, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
+    echo  json_encode(array('qtdeAgendamentos' => $qtdeAgendamentos,  'abstencao'=> $abstencao,'agendamentoAntigo' => $agendamentosAntigos, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT |  JSON_UNESCAPED_UNICODE));
 
 
 

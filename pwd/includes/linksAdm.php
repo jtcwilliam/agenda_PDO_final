@@ -35,6 +35,7 @@ switch ($tipoPessoa) {
         <a class="button fundoBotoesTopo" href="baixarSenhas.php">Check in Atendimento</a>
 
         <a class="button fundoBotoesTopo" href="report.php">Relatório </a>
+           <a class="button fundoBotoesTopo" href="sair.php">Sair </a>
         
 
     </div>

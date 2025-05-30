@@ -189,7 +189,9 @@ class Agendamento
 
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare(" SELECT *, date_format(dia, '%H:%i do dia  %d/%m/%Y')   as dia from agendamento ag inner join pessoas ps on ps.idpessoas = ag.idpessoa inner join
+            //2025-04-23
+
+            $stmt = $pdo->prepare(" SELECT *,  date_format(dia, '%Y-%m-%d') as diaComparar ,  date_format(dia, '%H:%i do dia  %d/%m/%Y')   as dia from agendamento ag inner join pessoas ps on ps.idpessoas = ag.idpessoa inner join
              unidade un on un.idUnidade = ag.idUnidade  where idpessoa = :idPessoa and ag.idStatus = :idStatus order by ag.dia asc  ");
             $stmt->execute(array('idPessoa' => $idPessoa, 'idStatus' => $idStatus));
             $datasDisponiveis = $stmt->fetchAll();

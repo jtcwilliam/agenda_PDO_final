@@ -7,7 +7,7 @@ date_default_timezone_set('America/Sao_Paulo');
 
 //'2025-05-05 14:00:00'
 
-echo date('Y-m-d 00:00:00');
+echo date('Y-m-d');
 
 
 $variavel = "   ";

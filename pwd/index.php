@@ -180,11 +180,15 @@ include_once 'includes/head.php';
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
                                             <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf"
-                                                onkeydown="mudarMascara(this.value)" required />
+                                                onkeydown="mudarMascara(this.value)"  value="326.890.658-35" required />
                                         </label>
 
                                         <input type="submit" class="button succes" href="#" onclick="consultarCPF($('#cpf').val(),0 )"
-                                            style="width: 100%;" value="consultar">
+                                            style="width: 100%;" value="Consultar">
+
+
+                                            <a   class="button succes" href="logar.php" 
+                                            style="width: 100%; background-color:rgb(10, 47, 67); font-weight: 400;"  >Acesso Corporativo </a>
                                         <br>
                                     </form>
                                 </div>
@@ -197,7 +201,7 @@ include_once 'includes/head.php';
                                 <div class="small-12 large-12 cell">
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
-                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
+                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf"   readonly />
                                         </label>
 
                                         <label style="font-weight: bold;"> Digite sua senha para acessar!
@@ -401,7 +405,7 @@ include_once 'includes/head.php';
                             <div class="grid-x grid-padding-x" id="agendamentosRealizadosAtivos">
                                 <div class="small-12 cell large-12">
                                     <fieldset class="fieldset">
-                                        <Legend style="font-weight: 800;">Seus Agendamentos Ativos</Legend>
+                                        <Legend style="font-weight: 800;">Seus Agendamentos</Legend>
 
                                         <div class="grid-x grid-padding-x" id="exibirAgendamentosAntigos"></div>
 

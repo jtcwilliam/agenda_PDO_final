@@ -307,13 +307,18 @@
 
 
                 //aqui muda as datas
+
+                
                 if (data.qtdeAgendamentos >= 2) {
                     $('#formularioAgendamento').hide();
                     $('#campoMensagemAgendamentosAtivos').show();
 
                 }
+             
 
                 $('#agendamentosRealizadosAtivos').show();
+
+                console.log(data.abstencao);
 
 
                 $('#valorAgendamentos').html('<b>' + data.qtdeAgendamentos + "</b>");

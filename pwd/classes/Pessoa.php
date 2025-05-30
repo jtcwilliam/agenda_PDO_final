@@ -103,7 +103,7 @@ class Pessoa
 
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare("select * from pessoas where documentoPessoa =:cpf   ");
+            $stmt = $pdo->prepare("select *, UCASE(nomePessoa) as nomePessoa from pessoas where documentoPessoa =:cpf   ");
 
             $stmt->execute(array(':cpf' => $cpf));
 

@@ -38,7 +38,7 @@ class Conexao
   //  servidor desenvolvimento
                     
   
-                 
+                  
                 
                 $user ='dbagenddev';
                $pwd = 'Sge@4@5';
@@ -46,9 +46,9 @@ class Conexao
                $host = 'dbagenddev.mysql.dbaas.com.br';
 
             
-
+   /*
    
-             /*
+        
             
    
 
@@ -59,9 +59,9 @@ class Conexao
                  $pwd = 'agendaf';
                  $db = 'agendaf';
                  $host = 'akuma.guarulhos.sp.gov.br';
-                
+                  */
 
-                 */
+                
   
              
 
