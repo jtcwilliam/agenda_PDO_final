@@ -134,7 +134,7 @@ include_once 'includes/head.php';
 
 
 
-        <div class="small-12 large-6 cell" style="  padding-left: 30px; padding-right: 30px ;height: 150vh; background-color:rgb(216, 216, 219);">
+        <div class="small-12 large-6 cell" style="  padding-left: 10px; padding-right: 10px ;height: 150vh; background-color:rgb(216, 216, 219);">
 
             <div class="grid-container">
 
@@ -180,7 +180,7 @@ include_once 'includes/head.php';
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
                                             <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf"
-                                                onkeydown="mudarMascara(this.value)"  value="326.890.658-35" required />
+                                                onkeydown="mudarMascara(this.value)"  value="" required />
                                         </label>
 
                                         <input type="submit" class="button succes" href="#" onclick="consultarCPF($('#cpf').val(),0 )"
