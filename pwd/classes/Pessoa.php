@@ -24,7 +24,7 @@ class Pessoa
 
 
     private $senha;
-
+    private $confirme;
 
 
 
@@ -201,6 +201,32 @@ class Pessoa
             echo 'Error: ' . $e->getMessage();
         }
     }
+
+
+
+      public function  alterarSenha()
+    {
+        try {
+
+            $pdo = $this->getPdoConn();
+                   
+            $stmt = $pdo->prepare("  UPDATE  pessoas SET pwd =  :senha  WHERE idPessoas = :idPessoa   ");
+
+            $stmt->bindValue(':senha',  $this->getSenha(), PDO::PARAM_STR);
+
+            $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR); 
+             
+            if ($stmt->execute()) {
+               
+                return true;
+            }
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+
+
 
 
 
@@ -595,6 +621,26 @@ class Pessoa
     public function setConfirmaTermo($confirmaTermo)
     {
         $this->confirmaTermo = $confirmaTermo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of confirme
+     */ 
+    public function getConfirme()
+    {
+        return $this->confirme;
+    }
+
+    /**
+     * Set the value of confirme
+     *
+     * @return  self
+     */ 
+    public function setConfirme($confirme)
+    {
+        $this->confirme = $confirme;
 
         return $this;
     }

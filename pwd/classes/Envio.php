@@ -42,12 +42,14 @@ class Envio
             $mail->Password   = '326890658@Bc';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;
+            $mail->CharSet = "UTF-8"; 
+
 
             $mail->SMTPDebug = 0;
             //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom('williamferreira@guarulhos.sp.gov.br', 'Remetente');
+            $mail->setFrom('williamferreira@guarulhos.sp.gov.br', 'Equipe Fácil Digital');
             $mail->addAddress($this->getDestinatario(), 'william ferreira');     //Add a recipient
                            
              $mail->addAddress($this->getDestinatario(), 'william ferreira');
@@ -62,8 +64,10 @@ class Envio
             $mail->Body    = $this->getConteudo();
             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-            $mail->send();
-            echo 'Message has been sent';
+            if($mail->send()){
+                return true;
+            }
+            
         } catch (Exception $e) {
             // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }

@@ -210,6 +210,9 @@ include_once 'includes/head.php';
 
                                         <input type="submit" class="button succes" href="#" onclick="logarUsuarioAgendamento($('#cpf').val(), $('#senhaTxt').val()  )"
                                             style="width: 100%;" value="Acessar o sistema">
+
+
+                                             <a  class="button succes" href="esqueciSenha.php"  style="width: 100%; color: white;  background-color:rgb(17, 140, 115);">Esqueci Minha Senha</a>
                                         <br>
                                     </form>
                                 </div>
