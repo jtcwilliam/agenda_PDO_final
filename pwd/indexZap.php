@@ -179,16 +179,16 @@ include_once 'includes/head.php';
                                 <div class="small-12 large-12 cell">
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
-                                            <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf"
-                                                onkeydown="mudarMascara(this.value)" value="" required />
+                                            <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf" 
+                                                onkeydown="mudarMascara(this.value)"  value="326.890.658-35" required />
                                         </label>
 
                                         <input type="submit" class="button succes" href="#" onclick="consultarCPF($('#cpf').val(),0 )"
                                             style="width: 100%;" value="Consultar">
 
 
-                                        <a class="button succes" href="logar.php"
-                                            style="width: 100%; background-color:rgb(10, 47, 67); font-weight: 400;">Acesso Corporativo </a>
+                                            <a   class="button succes" href="logar.php" 
+                                            style="width: 100%; background-color:rgb(10, 47, 67); font-weight: 400;"  >Acesso Corporativo </a>
                                         <br>
                                     </form>
                                 </div>
@@ -201,7 +201,7 @@ include_once 'includes/head.php';
                                 <div class="small-12 large-12 cell">
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
-                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
+                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf"  value="326.890.658-35"  readonly />
                                         </label>
 
                                         <label style="font-weight: bold;"> Digite sua senha para acessar!
@@ -212,7 +212,7 @@ include_once 'includes/head.php';
                                             style="width: 100%;" value="Acessar o sistema">
 
 
-                                        <a class="button succes" href="esqueciSenha.php" style="width: 100%; color: white;  background-color:rgb(17, 140, 115);">Esqueci Minha Senha</a>
+                                             <a  class="button succes" href="esqueciSenha.php"  style="width: 100%; color: white;  background-color:rgb(17, 140, 115);">Esqueci Minha Senha</a>
                                         <br>
                                     </form>
                                 </div>
@@ -438,24 +438,7 @@ include_once 'includes/head.php';
 
                     ?>
 
-                    <br>
-
-                    <div class="grid-x grid-padding-x">
-
-                        <div class="auto cell">
-
-                        </div>
-                        <div class="small-12 cell large-9">
-                            <br>
-                            <center>
-                                <img src="imgs/gestaoPNG.png" style="width: 70%;" />
-                            </center>
-                        </div>
-
-                        <div class="auto cell">
-
-                        </div>
-                    </div>
+                        <br>
 
                     <div class="grid-x grid-padding-x">
 
@@ -518,6 +501,32 @@ include_once 'includes/head.php';
 
 
         })
+
+
+          function enviarZap() {
+
+         
+
+            var formData = {
+                nome: 'William',
+                telefone: 'envio'
+            };
+            var condicao;
+            $.ajax({
+                    type: 'POST',
+                    url: 'https://30ef1883-0eea-4fe7-9cad-fbc376ca2d88-00-20zvzdpxiwxuh.janeway.replit.dev/dados?nome=william&idade=41',
+                    data: formData,
+                    dataType: 'json',
+                    encode: true
+                })
+                .done(function(data) {
+
+               
+                   
+
+                });
+            event.preventDefault();
+        }
 
 
         function consultarCPF(cpf, validador) {
@@ -796,6 +805,10 @@ include_once 'includes/head.php';
                                 var nomeString = $('.comboHorarios').val()
                                 var resultadoEspaco = nomeString.split(" ");
                                 console.log(resultadoEspaco);
+                                window.location.href = 'https://30ef1883-0eea-4fe7-9cad-fbc376ca2d88-00-20zvzdpxiwxuh.janeway.replit.dev/dados?nome=william&telefone=5511943951275';
+
+                                
+                                 
 
 
 

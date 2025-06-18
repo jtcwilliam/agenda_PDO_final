@@ -131,7 +131,8 @@ include_once 'includes/head.php';
                                                 onkeydown="mudarMascara(this.value)" value="" required />
                                         </label>
 
-                                        <input type="submit" class="button succes" href="#" onclick="consultarCPF($('#cpf').val(),0 )"
+                                        <input   type="submit" class="button succes" id="consultarSenhas" href="#" onclick="consultarCPF($('#cpf').val(),0 );  
+                                         $(this).attr('disabled',true)"
                                             style="width: 100%; font-weight: bold;" value="Clique Aqui para alterar a Senha">
                                         <br>
                                     </form>
@@ -155,18 +156,7 @@ include_once 'includes/head.php';
                             <!-- segundo formulario, consulta inseere nome-->
                             <div class="grid-x grid-padding-x" id="nomeUsuario">
 
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
                             </div>
@@ -276,6 +266,8 @@ include_once 'includes/head.php';
 
         function consultarCPF(cpf, validador) {
 
+            
+
             if (cpf.length == 0 || cpf.length == 1) {
                 alert('insira o seu cpf ou cnpj');
                 return false;
@@ -317,17 +309,24 @@ include_once 'includes/head.php';
                 })
                 .done(function(data) {
 
+                    console.log(data);
+
                     if (data.retorno == true) {
                         $('#modalSucesso').foundation('open');
                        
                         setTimeout(function() {
                            window.location.href = "http://agendafacil.guarulhos.sp.gov.br";
-Í
+
+                            
+
                         }, 2000);
 
 
+
+
+
                     }else{
-                        alert('Tente Novamente mais tarde!');
+                        alert('Olá! Houve um problema técnico que vamos resolver em breve! Por favor, volte novamente mais tarde!');
                     }
                 });
             event.preventDefault();

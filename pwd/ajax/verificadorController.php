@@ -26,6 +26,9 @@ if (isset($_POST['esqueciSenha'])) {
     $dataVerificadora=  md5($dataVerificadora);
 
 
+      $nome = explode(' ', $dadoUsuario['dados']['0']['nomePessoa']);
+
+            $nome = $nome[0];
 
 
     if ($dadoUsuario['condicao'] == 1) {
@@ -46,23 +49,25 @@ if (isset($_POST['esqueciSenha'])) {
 
         <body style="font-family: Arial, Helvetica, sans-serif;">
             <center>
-                <h2>Olá. Somos do Sistema Agenda Fácil da Prefeitura de Guarulhos </h2>
+                <h2>Olá <?=$nome?> .  Somos do Sistema Agenda Fácil da Prefeitura de Guarulhos </h2>
 
                 <h2>Você solicitou para alterar sua senha e vamos ajudá-lo por aqui. </h2>
 
 
-                <a style="color: green;"
+                <a style="color: green; text-decoration: none; font-style: italic;"
                     href="https://agendafacil.guarulhos.sp.gov.br/redefinirSenha.php?verifyT=<?=$dataVerificadora ?>&dwp=<?=$dadoUsuario['dados']['0']['idPessoas'] ?>&slash=<?=md5($dadoUsuario['dados']['0']['idPessoas']) ?>  " target="_blank">
-                    <h4>Clique aqui para alterar sua senha com segurança</h4>
+                    <h2  >Clique aqui para alterar sua senha com segurança</h2>
                 </a>
                 <br>
 
-                Estamos á Disposição!
+               <h4> Estamos á Disposição!<br>
 
-                <b>Equipe Agenda Fácil <br>
-                    Prefeitura de Guarulhos</b>
+                <b>Equipe Agenda Fácil </b>
+                   <h2> Prefeitura de Guarulhos</h2></h4>
 
-                <img src="https://agendafacil.guarulhos.sp.gov.br/imgs/logoFacilTransparente.png" style="width: 10%;" />
+                 
+
+                
 
             </center>
         </body>
@@ -85,12 +90,12 @@ if (isset($_POST['esqueciSenha'])) {
         if ($objEnvio->envioEmail()) {
 
 
-            $nome = explode(' ', $dadoUsuario['dados']['0']['nomePessoa']);
-
-            $nome = $nome[0];
+          
             echo json_encode(array('retorno' => true, 'nome' => ucfirst($nome)));
             exit();
         } else {
+            echo json_encode(array('retorno' => false));
+           
             exit();
         }
     }
