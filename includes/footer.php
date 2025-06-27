@@ -372,9 +372,6 @@
             unidadeUsuario: unidadeUsuario
         };
 
-
-       
-
         $.ajax({
                 type: 'POST',
                 url: 'ajax/areaSuperAdmController.php',

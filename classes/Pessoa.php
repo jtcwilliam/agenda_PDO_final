@@ -61,12 +61,12 @@ class Pessoa
     {
         try {
 
-         
+
             $pdo = $this->getPdoConn();
 
             $stmt = $pdo->prepare("select * from pessoas where documentoPessoa =:cpf  and pwd= :pwd  ");
 
-            $stmt->execute(array(':cpf' => $cpf, ':pwd'=>$senha  ));
+            $stmt->execute(array(':cpf' => $cpf, ':pwd' => $senha));
 
             $retorno = array();
 
@@ -161,7 +161,7 @@ class Pessoa
             $stmt->bindValue(':emailUsuario', $this->getEmailUsuario(), PDO::PARAM_STR);
             $stmt->bindValue(':pwd', $this->getSenha(), PDO::PARAM_STR);
             $stmt->bindValue(':termoUso', $this->getConfirmaTermo(), PDO::PARAM_STR);
- 
+
             if ($stmt->execute()) {
                 return true;
             }
@@ -204,27 +204,50 @@ class Pessoa
 
 
 
-      public function  alterarSenha()
-    {
-        try {
+    public function  alterarSenha()
+        {
+            try {
 
-            $pdo = $this->getPdoConn();
-                   
-            $stmt = $pdo->prepare("  UPDATE  pessoas SET pwd =  :senha  WHERE idPessoas = :idPessoa   ");
+                $pdo = $this->getPdoConn();
 
-            $stmt->bindValue(':senha',  $this->getSenha(), PDO::PARAM_STR);
+                $stmt = $pdo->prepare("  UPDATE  pessoas SET pwd =  :senha  WHERE idPessoas = :idPessoa   ");
 
-            $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR); 
-             
-            if ($stmt->execute()) {
-               
-                return true;
+                $stmt->bindValue(':senha',  $this->getSenha(), PDO::PARAM_STR);
+
+                $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR);
+
+                if ($stmt->execute()) {
+
+                    return true;
+                }
+            } catch (PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
             }
-        } catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
         }
-    }
 
+
+            public function  alterarDados()
+        {
+            try {
+
+                $pdo = $this->getPdoConn();
+
+                $stmt = $pdo->prepare("  UPDATE  pessoas SET nomePessoa= :nome,    emailUsuario = :email  WHERE idPessoas = :idPessoa   ");
+
+                $stmt->bindValue(':email',  $this->getEmailUsuario(), PDO::PARAM_STR);
+
+                $stmt->bindValue(':nome',  $this->getNomePessoa(), PDO::PARAM_STR);
+
+                $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR);
+
+                if ($stmt->execute()) {
+
+                    return true;
+                }
+            } catch (PDOException $e) {
+                echo 'Error: ' . $e->getMessage();
+            }
+        }
 
 
 
@@ -587,7 +610,7 @@ class Pessoa
 
     /**
      * Get the value of validaTipoCadastro
-     */ 
+     */
     public function getValidaTipoCadastro()
     {
         return $this->validaTipoCadastro;
@@ -597,7 +620,7 @@ class Pessoa
      * Set the value of validaTipoCadastro
      *
      * @return  self
-     */ 
+     */
     public function setValidaTipoCadastro($validaTipoCadastro)
     {
         $this->validaTipoCadastro = $validaTipoCadastro;
@@ -607,7 +630,7 @@ class Pessoa
 
     /**
      * Get the value of confirmaTermo
-     */ 
+     */
     public function getConfirmaTermo()
     {
         return $this->confirmaTermo;
@@ -617,7 +640,7 @@ class Pessoa
      * Set the value of confirmaTermo
      *
      * @return  self
-     */ 
+     */
     public function setConfirmaTermo($confirmaTermo)
     {
         $this->confirmaTermo = $confirmaTermo;
@@ -627,7 +650,7 @@ class Pessoa
 
     /**
      * Get the value of confirme
-     */ 
+     */
     public function getConfirme()
     {
         return $this->confirme;
@@ -637,7 +660,7 @@ class Pessoa
      * Set the value of confirme
      *
      * @return  self
-     */ 
+     */
     public function setConfirme($confirme)
     {
         $this->confirme = $confirme;
