@@ -27,55 +27,68 @@ if (isset($_POST['porDias'])) {
 
 
 
-?>
-
-
-
-
-    <?php
-
+    $nomeUnidade = array();
 
     foreach ($diasRetornar as $key => $value) {
-    ?>
-        <table  >
-            
-
-                <tr style="background-color:rgb(220, 217, 217) " > 
-                    <td colspan="4"><b>Dia: </b>  <?= $value['dia']; ?>. &nbsp; &nbsp; <b>Quantidade: </b>   <?= $value['qtde']; ?></td>
-                     
-                </tr>
-            
-            <tbody>
-                <?php
 
 
-
-
-                $analiticoDia = $objReport->consultaDia($value['dataformatada']);
-
-                    echo '<tr>';
-                foreach ($analiticoDia as $key => $value) {
-                    # code...
-
-                ?>
-                    
-                        <td style="width: 30%;"><b><?= $value['descricao']; ?> </b>  <br> <?= $value['qtde']; ?> </td>
-                        
-                    
-                <?php
-                }
-                echo '</tr>';
-
-                ?>
-
-
-
-            </tbody>
-
-
-        </table>
-    <?php
+        array_push($nomeUnidade, $value['nomeUnidade']);
     }
+
+    $nomeUnidade = array_unique($nomeUnidade); ?>
+
+
+
+
+   
+
+
+        <?php
+        foreach ($nomeUnidade as $key => $value) { ?>
+ <table>
+            <thead>
+
+                <th colspan="5"><?= $value ?></th>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <?php
+
+                    foreach ($diasRetornar as $key => $valueB) {
+                        if (in_array($value, $valueB)) {
+
+                            $descricao = $valueB['descricaoStatus'];
+
+                            if($descricao == 'Não Atendido'){
+                                $descricao = 'Ausente';
+                            }
+
+
+                    ?>
+
+                            <td><b><?= $descricao?></b> <?= $valueB['qtde'] ?></td>
+
+
+                <?php
+                        }
+                    }?>
+
+                       </tr>
+            </tbody>
+               <?php }
+                ?>
+             
+
+    </table>
+
+
+
+
+    <?php
+
+
+  
     ?>
 
 

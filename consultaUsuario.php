@@ -294,10 +294,16 @@ if (
 
                             if (data.retorno == true) {
                                 alert('Dados do Usuário Alterados com Sucesso. Informe ao Cidadão que os dados para acesso foram alterados!');
+                                
+                                $('.cpf').val('');
 
                                 $('#senhaUsuario').val('');
 
                                 $('#confirmaSenha').val('');
+
+                                $('#nomeUsuario').val('');
+
+                                $('#emailUsuario').val('');
                             }
                         });
 

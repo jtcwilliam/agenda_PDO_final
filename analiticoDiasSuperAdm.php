@@ -141,7 +141,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] == 4  || $_SESSION['u
 
 
             //
-            verificarDatasAnaliticosDaUnidade(<?=$_SESSION['usuarioLogado']['dados'][0]['idUnidade'] ?>, <?= $_GET['dataUnidade']  ?>)
+            verificarDatasAnaliticosDaUnidade(<?=$_GET['idUnidade'] ?>, <?= $_GET['dataUnidade']  ?>)
         })
 
 

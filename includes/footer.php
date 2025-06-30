@@ -444,6 +444,8 @@
             })
             .done(function(data) {
 
+                console.log(data);
+
                 $('#analiseAgendas').html(data);
             });
     }

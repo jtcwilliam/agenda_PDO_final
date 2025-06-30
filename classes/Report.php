@@ -51,10 +51,9 @@ class Report
 
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare(" select   dia as 'diaoriginal',    date_format(dia,'%Y-%m-%d' ) as 'dataformatada',   date_format(dia, '%d/%m/%Y') as dia , count(ag.idAgendamento)  as 'qtde'  
-                                from agendamento ag inner join status st on ag.idStatus = st.idStatus  inner join unidade un on ag.idUnidade = un.idUnidade
-                                          where dia between  :dataInicial  and  :dataFinal  
-                                        group by  date_format(dia, '%d/%m/%Y'), nomeUnidade  order by  diaoriginal ");
+            $stmt = $pdo->prepare("select nomeUnidade, descricaoStatus,  count(ag.idAgendamento)  as 'qtde'   from agendamento ag inner join status st on ag.idStatus = st.idStatus 
+             inner join unidade un on ag.idUnidade = un.idUnidade  where dia between :dataInicial  and  :dataFinal   
+               group by   nomeUnidade , descricaoStatus  order by   nomeUnidade ");
                                         
 
             $stmt->execute(array(':dataInicial' => $dataInicial,  ':dataFinal' => $dataFinal,   ));

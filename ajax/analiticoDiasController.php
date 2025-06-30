@@ -101,7 +101,7 @@ if (isset($_POST['analiseDeDias'])) {
  
 
 
-    $dadosAgendamento = $objAgendamento->verificarAgendamentoParaBaixaADM($_POST['envioDados']);
+    $dadosAgendamento = $objAgendamento->retornarPessoaParaCheckIn($_POST['envioDados']);
 
 
     $tamanho = sizeof($dadosAgendamento);
@@ -164,7 +164,7 @@ if (isset($_POST['datasAnaliticoAdmSintetico'])) {
 
 
     $agendas = $objAgendamento->verificarTodosAgendamentosUnidadeAdmDeUnidade($_POST['unidadeUsuario'], $_POST['dataDaUnidade']);
-
+  
     $agendaDisponiveis = 0;
     $agendasAtendidas = 0;
     $telefonicas = 0;

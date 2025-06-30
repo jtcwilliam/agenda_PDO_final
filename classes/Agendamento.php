@@ -101,6 +101,30 @@ class Agendamento
 
 
 
+
+    public function  retornarPessoaParaCheckIn($dado)
+    {
+        try {
+            
+            $pdo = $this->getPdoConn();
+
+            $stmt = $pdo->prepare(" SELECT  *,  date_format(dia, '%H:00') as hora  ,date_format(dia, '%d/%m/%Y') as dia from agendamento ag left join pessoas ps on ps.idPessoas = ag.idPessoa left join unidade un on ag.idUnidade = un.idUnidade
+                                        where  ( ps.documentoPessoa = :docPessoa )  and idstatus in(3,8)  order by  date_format(dia, '%d/%m/%Y') asc ");
+
+            $stmt->execute(array(':docPessoa' => md5($dado)));
+
+
+
+            $datasDisponiveis = $stmt->fetchAll();
+
+
+            return $datasDisponiveis;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+
     //metodo que retorna os agendamentos de cada dia em 1 unidade (visivel para responsavel da unidade e o gestor da rede (super usuaario))
     public function  verificarAgendamentoParaBaixaADM($dado)
     {
