@@ -7,13 +7,6 @@ $objPessoaMovimentar = new Pessoa();
 $validadorSenha = $_POST['atualizarUsuario'];
 
 
-/*
-nomeUsuario,
-                        emailUsuario,
-                        senhaUsuario,
-                        confirmaSenha,
-                        atualizarUsuario
-                        */
 
 if (isset($_POST['atualizarUsuario'])) {
 
