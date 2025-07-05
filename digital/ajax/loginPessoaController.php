@@ -19,7 +19,9 @@ $usuario = $ldap->logar($emailUsuario, $senha);
  
 
 
-if (isset($usuario['count'])  && $usuario['count'] == 1) {
+//tirar o comentario daqui
+// 
+ if (isset($usuario['count'])  && $usuario['count'] == 1) {
 
 
     $objPessoaMovimentar->setEmailUsuario($emailUsuario);
@@ -36,6 +38,9 @@ if (isset($usuario['count'])  && $usuario['count'] == 1) {
             echo json_encode(array('retorno' => false, 'dadosUsuario' => '0'));
         }
     }
+
+    
+   
 }else
 {
      

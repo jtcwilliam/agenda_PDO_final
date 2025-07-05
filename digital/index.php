@@ -10,7 +10,7 @@ include_once 'includes/head.php';
 
 <body style="background-image: url('imgs/fundoAgendamento.jpg') ;         background-size: cover ">
 
-    <!-- modais de informação -->
+    <!-- modais de informação sucesso cadastrado -->
 
     <div class="full reveal" id="usuarioInserido" data-reveal style="background-color:#2C255B;">
         <div style="display: grid;  justify-content: center; align-content: center; height: 100vh; padding-top: 0px;">
@@ -37,6 +37,8 @@ include_once 'includes/head.php';
     </div>
 
 
+
+<!-- modal de termo de uso -->
     <div class="large reveal" id="termoUso" data-reveal style="background-color:white;">
         <div style="  padding-top: 0px;">
             <div style="color: black; text-align: justify; padding-left: 10px; padding-right: 10px; ">
@@ -103,12 +105,20 @@ include_once 'includes/head.php';
 
 
         </div>
-    </div>
-    <button class="close-button" type="button">
-        <span aria-hidden="true"></span>
-    </button>
+        </div>
+
+
+
+        <button class="close-button" type="button">
+            <span aria-hidden="true"></span>
+        </button>
     </div>
 
+
+
+
+
+    <!-- modal confirmação da solicitação -->
     <div class="full reveal" id="modalSucesso" data-reveal style="background-color:#2C255B;">
         <div style="display: grid;  justify-content: center; align-content: center; height: 100vh; padding-top: 0px;">
             <center style="color: white;">
@@ -125,8 +135,9 @@ include_once 'includes/head.php';
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-
     <!-- fim dos modais -->
+
+
     <div class="grid-x grid-padding-x" style="height: 100vh;">
         <div class="auto cell">
 
@@ -139,6 +150,7 @@ include_once 'includes/head.php';
             <div class="grid-container">
 
 
+                        
                 <div class="grid-x grid-padding-x" style="margin-bottom: 30px;">
                     <div class="auto cell">
 
@@ -232,42 +244,15 @@ include_once 'includes/head.php';
 
 
 
-                            <!-- segundo formulario, consulta inseere nome-->
+                            <!-- segundo formulario, consulta cadastra o usuario -->
                             <div class="grid-x grid-padding-x" id="nomeUsuario">
 
 
 
 
-
-                                <div class="small-12  large-6 cell escolhaTipoAgendamento ">
-                                    <a class="button succes" style="width: 100%; background-color:rgb(252, 111, 46); border-radius: 20px;" onclick="$('#camposAgendamentos').show();  $('.agendaCompleto').show()  ;
-                        $('.escolhaTipoAgendamento').hide();  $('#validaTipoCadastro').val(1)">
-                                        <h4 style="font-weight: bolder;">Agendamento Identificado</h4>
-                                        <h6>Clique para fazer seu agendamento com identificação por CPF e Senha</h6>
-                                    </a>
-                                </div>
-
-                                <div class="small-12  large-6  cell escolhaTipoAgendamento ">
-                                    <a class="button succes" style="width: 100%; border-radius: 20px;" onclick="$('#camposAgendamentos').show(); $('.escolhaTipoAgendamento').hide();   $('.agendaCompleto').hide();
-                            $('#validaTipoCadastro').val(0)
-                        ">
-                                        <h4 style="font-weight: bolder;"> Agendamento Simplificado</h4>
-                                        <h6>Agendamento 60+, Pessoa com deficiência ou agendamento sem a necessidade de Senha</h6>
-                                    </a>
-                                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                                <div class="small-12 large-12 cell" style="display: none;" id="camposAgendamentos">
+ 
+  
+                                <div class="small-12 large-12 cell" style="display: show;" id="camposAgendamentos">
                                     <label style="font-weight: bold; font-size: 1.3em;"> Vamos continuar seu agendamento! Digite seu nome
                                         <input type="text" placeholder="Digite aqui seu Aqui" class="nomeAgendamento"
                                             id="nomeAgendamento" />
@@ -276,7 +261,7 @@ include_once 'includes/head.php';
                                     <label style="font-weight: bold;  display: none; "> validacao tipo de usuario
 
                                         <input type="text" placeholder="Digite aqui seu  validador" class=""
-                                            id="validaTipoCadastro" />
+                                            id="validaTipoCadastro" value='1' />
                                     </label>
 
                                     <label style="font-weight: bold;  font-size: 1.3em; " class="agendaCompleto"> Qual seu email?<br>
@@ -315,15 +300,7 @@ include_once 'includes/head.php';
                                 </div>
                             </div>
 
-                            <div class="grid-x grid-padding-x" id="campoMensagemAgendamentosAtivos">
-                                <div class="small-12 cell large-12">
-                                    <br>
-                                    <center>
-                                        <h4>Olá. Você Ja possui <span id="valorAgendamentos"></span> agendamentos ativos</h4>
-                                        </h5> Após encerrar esses atendimentos, você poderá agendar novos Horários</h5>
-                                    </center>
-                                </div>
-                            </div>
+                            
 
 
                             <!-- aqui faz o agendamento -->
@@ -404,21 +381,7 @@ include_once 'includes/head.php';
 
 
 
-
-                            <div class="grid-x grid-padding-x" id="agendamentosRealizadosAtivos">
-                                <div class="small-12 cell large-12">
-                                    <fieldset class="fieldset">
-                                        <Legend style="font-weight: 800;">Seus Agendamentos</Legend>
-
-                                        <div class="grid-x grid-padding-x" id="exibirAgendamentosAntigos"></div>
-
-
-
-                                </div>
-                                </fieldset>
-                            </div>
-
-
+ 
 
 
                         </div>
@@ -555,7 +518,9 @@ include_once 'includes/head.php';
                         $('#nomeUsuario').delay('fast').fadeIn();
 
 
+                        $('#camposAgendamentos').show()
 
+                         $('.agendaCompleto').show()
 
 
 
@@ -576,32 +541,12 @@ include_once 'includes/head.php';
 
                             $('#exibirCpf').val(cpf);
 
-
-
-
-
-
-
+ 
 
 
 
                         } else {
-                            ;
-
-
-
-
-                            $('#loginCPF').hide();
-                            $('#nomeUsuario').hide();
-                            $('#formularioAgendamento').show();
-
-
-                            $('#txtNome').val(data.retornoCondicao.dados[0].nomePessoa);
-                            $('#txtCPF').val(cpf);
-                            $('#txtIdUsuario').val(data.retornoCondicao.dados[0].idPessoas);
-
-                            comboUnidadesComum();
-                            agendamentosAtivos(data.retornoCondicao.dados[0].idPessoas);
+                            
                         }
 
 
@@ -742,76 +687,7 @@ include_once 'includes/head.php';
 
 
 
-        function registrarAgendamento() {
-            var comboHorarios = $('.comboHorarios').val();
-            var selectUnidade = $('#selectUnidade').val();
-
-
-
-
-            if (selectUnidade != 0) {
-                if (comboHorarios != 0) {
-                    var formData = {
-                        registrarAgendamento: 1,
-                        idUsuario: $('#txtIdUsuario').val(),
-                        comboHorarios: comboHorarios,
-                        selectUnidade: selectUnidade,
-                        selectAgendamento: $('.selectTipoAgendamento').val(),
-                        idStatus: '3'
-                    };
-                    var condicao;
-                    $.ajax({
-                            type: 'POST',
-                            url: 'ajax/agendamentoController.php',
-                            data: formData,
-                            dataType: 'json',
-                            encode: true
-                        })
-                        .done(function(data) {
-
-                            console.log(data);
-
-                            if (data.retorno == true) {
-                                $('#formularioAgendamento').hide();
-                                $('#modalSucesso').foundation('open');
-
-
-                                var nomeString = $('.comboHorarios').val()
-                                var resultadoEspaco = nomeString.split(" ");
-                                console.log(resultadoEspaco);
-
-
-
-
-
-
-
-                                $('.protocoloAgendamento').html('Seu Atendimento será às  ' + $('.comboHorarios')
-                                    .val());
-                                agendamentosAtivos($('#txtIdUsuario').val());
-
-
-
-
-
-                                $('#nomeNoticia').html($('#txtNome').val())
-
-                                //txtNome
-
-                                //cpf
-
-
-                            }
-                        });
-                    event.preventDefault();
-                } else {
-                    alert("Você deve selecionar um horário para seu atendimento");
-                }
-            } else {
-                alert("Você deve selecionar uma unidade para seu atendimento");
-            }
-        }
-
+     
 
 
 
