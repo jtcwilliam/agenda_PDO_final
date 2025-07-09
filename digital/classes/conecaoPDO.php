@@ -34,7 +34,7 @@ class Conexao
   //  servidor desenvolvimento
                     
   
-               
+                
                 
                 $user ='dbagenddev';
                $pwd = 'Sge@4@5';
@@ -43,10 +43,9 @@ class Conexao
 
             
   
+      /*  
    
-   
-    /*  
-
+ 
           
 
             //   servidor oficial
@@ -56,8 +55,8 @@ class Conexao
                  $host = 'akuma.guarulhos.sp.gov.br';
               
 
-                         */ 
-  
+                    
+      */ 
              
 
 

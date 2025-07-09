@@ -80,6 +80,9 @@ class Pessoa
                 $retorno['condicao'] = true;
                 $retorno['dados'] = $dados;
                 $i++;
+                session_start();
+                $_SESSION['usuariosLogados'] = $dados;
+                $_SESSION['condicao'] = true;
             }
 
             if (empty($dados)) {
@@ -205,49 +208,49 @@ class Pessoa
 
 
     public function  alterarSenha()
-        {
-            try {
+    {
+        try {
 
-                $pdo = $this->getPdoConn();
+            $pdo = $this->getPdoConn();
 
-                $stmt = $pdo->prepare("  UPDATE  pessoas SET pwd =  :senha  WHERE idPessoas = :idPessoa   ");
+            $stmt = $pdo->prepare("  UPDATE  pessoas SET pwd =  :senha  WHERE idPessoas = :idPessoa   ");
 
-                $stmt->bindValue(':senha',  $this->getSenha(), PDO::PARAM_STR);
+            $stmt->bindValue(':senha',  $this->getSenha(), PDO::PARAM_STR);
 
-                $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR);
+            $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR);
 
-                if ($stmt->execute()) {
+            if ($stmt->execute()) {
 
-                    return true;
-                }
-            } catch (PDOException $e) {
-                echo 'Error: ' . $e->getMessage();
+                return true;
             }
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
         }
+    }
 
 
-            public function  alterarDados()
-        {
-            try {
+    public function  alterarDados()
+    {
+        try {
 
-                $pdo = $this->getPdoConn();
+            $pdo = $this->getPdoConn();
 
-                $stmt = $pdo->prepare("  UPDATE  pessoas SET nomePessoa= :nome,    emailUsuario = :email  WHERE idPessoas = :idPessoa   ");
+            $stmt = $pdo->prepare("  UPDATE  pessoas SET nomePessoa= :nome,    emailUsuario = :email  WHERE idPessoas = :idPessoa   ");
 
-                $stmt->bindValue(':email',  $this->getEmailUsuario(), PDO::PARAM_STR);
+            $stmt->bindValue(':email',  $this->getEmailUsuario(), PDO::PARAM_STR);
 
-                $stmt->bindValue(':nome',  $this->getNomePessoa(), PDO::PARAM_STR);
+            $stmt->bindValue(':nome',  $this->getNomePessoa(), PDO::PARAM_STR);
 
-                $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR);
+            $stmt->bindValue(':idPessoa', $this->getIdPessoas(), PDO::PARAM_STR);
 
-                if ($stmt->execute()) {
+            if ($stmt->execute()) {
 
-                    return true;
-                }
-            } catch (PDOException $e) {
-                echo 'Error: ' . $e->getMessage();
+                return true;
             }
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
         }
+    }
 
 
 

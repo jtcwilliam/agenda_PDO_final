@@ -2,12 +2,88 @@
 
 
 
-
-
-class servicosFacil
+class Servicos
 {
 
+
+
     private $conexao;
+    private $dns;
+    private $user;
+    private $pwd;
+
+
+    private $idUnidade;
+    private $nomeUnidade;
+    private $statusUnidade;
+    private $responsavelUnidade;
+
+    private $pdoConn;
+
+    function __construct()
+    {
+        include_once 'conecaoPDO.php';
+        //criar uma instancia de conexao;
+        $objConectar = new Conexao();
+
+        //chamar o metdo conectar
+        $objbanco = $objConectar->ConectarPDO();
+
+        $this->setPdoConn($objbanco);
+    }
+
+    public function  trazerServicos($filtro = null)
+    {
+        try {
+
+
+            $pdo = $this->getPdoConn();
+
+
+
+            $sql = "select  * from linkCartaServico ";
+
+            if ($filtro != null) {
+                $sql .= " where idUnidade= " . $filtro;
+            }
+
+
+            $stmt = $pdo->prepare($sql);
+
+
+            $stmt->execute();
+
+            //$user = $stmt->fetchAll();
+
+
+
+            $retorno = array();
+
+            $dados = array();
+
+            $row = $stmt->fetchAll();
+
+            foreach ($row as $key => $value) {
+                $dados[] = $value;
+            }
+
+
+            if (!isset($dados)) {
+                $retorno['condicao'] = false;
+            }
+
+
+
+
+            return $dados;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+
+
+
+
 
     function getConexao()
     {
@@ -23,87 +99,167 @@ class servicosFacil
 
 
 
-    function __construct()
+
+
+
+
+    /**
+     * Get the value of dns
+     */
+    public function getDns()
     {
-        include_once 'Conexao.php';
-        //criar uma instancia de conexao;
-        $objConectar = new Conexao();
-
-        //chamar o metdo conectar
-        $banco = $objConectar->Conectar();
-
-        //criar uma instancia dessa nova conexao
-        $this->setConexao($banco);
+        return $this->dns;
     }
 
-
-
-
-    public function trazerServicos()
+    /**
+     * Set the value of dns
+     *
+     * @return  self
+     */
+    public function setDns($dns)
     {
+        $this->dns = $dns;
 
-        $sql = "select  * from links ";
-
-        $executar = mysqli_query($this->getConexao(), $sql);
-
-        while ($row = mysqli_fetch_assoc($executar)) {
-
-            $dados[] = $row;
-        }
-
-        if (isset($dados)) {
-
-            return $dados;
-        } else {
-        }
+        return $this;
     }
 
-
-
-    public function consultarDadosServicos($info)
+    /**
+     * Get the value of user
+     */
+    public function getUser()
     {
-
-        $sql = "SELECT * FROM  links where idlinks  = '" . $info . "'";
-
-        $executar = mysqli_query($this->getConexao(), $sql);
-
-        while ($row = mysqli_fetch_assoc($executar)) {
-
-            $dados[] = $row;
-        }
-
-        if (isset($dados)) {
-
-            return $dados;
-        } else {
-        }
+        return $this->user;
     }
 
-    public function consultarDadosServicosTextos($info)
+    /**
+     * Set the value of user
+     *
+     * @return  self
+     */
+    public function setUser($user)
     {
+        $this->user = $user;
 
-        $sql = "SELECT * FROM  links where nomeDoLink  like '%" . $info . "%'";
+        return $this;
+    }
 
+    /**
+     * Get the value of pwd
+     */
+    public function getPwd()
+    {
+        return $this->pwd;
+    }
 
+    /**
+     * Set the value of pwd
+     *
+     * @return  self
+     */
+    public function setPwd($pwd)
+    {
+        $this->pwd = $pwd;
 
-        $executar = mysqli_query($this->getConexao(), $sql);
+        return $this;
+    }
 
-        $dados = array();
+    /**
+     * Get the value of idUnidade
+     */
+    public function getIdUnidade()
+    {
+        return $this->idUnidade;
+    }
 
-        while ($row = mysqli_fetch_assoc($executar)) {
+    /**
+     * Set the value of idUnidade
+     *
+     * @return  self
+     */
+    public function setIdUnidade($idUnidade)
+    {
+        $this->idUnidade = $idUnidade;
 
+        return $this;
+    }
 
-            $dados[] = $row;
-        }
+    /**
+     * Get the value of nomeUnidade
+     */
+    public function getNomeUnidade()
+    {
+        return $this->nomeUnidade;
+    }
 
-        if (sizeof($dados) > 0) {
+    /**
+     * Set the value of nomeUnidade
+     *
+     * @return  self
+     */
+    public function setNomeUnidade($nomeUnidade)
+    {
+        $this->nomeUnidade = $nomeUnidade;
 
-            return $dados;
-            exit();
-        } else {
+        return $this;
+    }
 
+    /**
+     * Get the value of statusUnidade
+     */
+    public function getStatusUnidade()
+    {
+        return $this->statusUnidade;
+    }
 
-            return $dados[] = false;
-        }
+    /**
+     * Set the value of statusUnidade
+     *
+     * @return  self
+     */
+    public function setStatusUnidade($statusUnidade)
+    {
+        $this->statusUnidade = $statusUnidade;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of responsavelUnidade
+     */
+    public function getResponsavelUnidade()
+    {
+        return $this->responsavelUnidade;
+    }
+
+    /**
+     * Set the value of responsavelUnidade
+     *
+     * @return  self
+     */
+    public function setResponsavelUnidade($responsavelUnidade)
+    {
+        $this->responsavelUnidade = $responsavelUnidade;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pdoConn
+     */
+    public function getPdoConn()
+    {
+        return $this->pdoConn;
+    }
+
+    /**
+     * Set the value of pdoConn
+     *
+     * @return  self
+     */
+    public function setPdoConn($pdoConn)
+    {
+        $this->pdoConn = $pdoConn;
+
+        return $this;
     }
 }

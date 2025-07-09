@@ -9,28 +9,32 @@
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-    
 
-    
+
+
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
     <style>
         body {
 
-            background-color:rgb(231, 228, 220);
-            
-        }
-        label{
-            font-weight: 700;
-        }
-        .fundoBotoesTopo{
-            background-color: #28536b;
-        }
-        .reveal-overlay{
-            background-color: rgba(10, 10, 10, 0.9)
+            background-color: rgb(231, 228, 220);
+
         }
 
+        label {
+            font-weight: 700;
+        }
+
+        .fundoBotoesTopo {
+            background-color: #28536b;
+        }
+
+        .reveal-overlay {
+            background-color: rgba(10, 10, 10, 0.9)
+        }
     </style>
 
 

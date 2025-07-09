@@ -36,9 +36,32 @@
     </form>
 </body>
 
-</html>
+<script>
 
-       $user ='dbagenddev';
-               $pwd = 'Sge@4@5';
-               $db = 'dbagenddev';
-               $host = 'dbagenddev.mysql.dbaas.com.br';
+ function logarUsuarioAgendamento(cpf, senha) {
+            var formData = {
+                cpf: cpf,
+                senha: senha
+
+            };
+            var condicao;
+            $.ajax({
+                    type: 'POST',
+                    url: 'ajax/logarUsuarioAgendamentoController.php',
+                    data: formData,
+                    dataType: 'json',
+                    encode: true
+                })
+                .done(function(data) {
+
+                     
+                });
+
+
+
+            event.preventDefault();
+        }
+
+</script>
+
+</html>

@@ -5,6 +5,8 @@
 
 
 include_once 'includes/head.php';
+session_start();
+
 
 ?>
 
@@ -38,7 +40,7 @@ include_once 'includes/head.php';
 
 
 
-<!-- modal de termo de uso -->
+    <!-- modal de termo de uso -->
     <div class="large reveal" id="termoUso" data-reveal style="background-color:white;">
         <div style="  padding-top: 0px;">
             <div style="color: black; text-align: justify; padding-left: 10px; padding-right: 10px; ">
@@ -105,13 +107,13 @@ include_once 'includes/head.php';
 
 
         </div>
-        </div>
+    </div>
 
 
 
-        <button class="close-button" type="button">
-            <span aria-hidden="true"></span>
-        </button>
+    <button class="close-button" type="button">
+        <span aria-hidden="true"></span>
+    </button>
     </div>
 
 
@@ -138,7 +140,10 @@ include_once 'includes/head.php';
     <!-- fim dos modais -->
 
 
-    <div class="grid-x grid-padding-x" style="height: 100vh;">
+
+
+    <!--container com todos os elementros para login e cadastro -->
+    <div class="grid-x grid-padding-x" id="containerCadastro" style="height: 70vh;  ">
         <div class="auto cell">
 
         </div>
@@ -150,7 +155,7 @@ include_once 'includes/head.php';
             <div class="grid-container">
 
 
-                        
+
                 <div class="grid-x grid-padding-x" style="margin-bottom: 30px;">
                     <div class="auto cell">
 
@@ -190,30 +195,30 @@ include_once 'includes/head.php';
 
                                 <div class="small-12 large-12 cell">
                                     <form action="#">
-                                        <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
+                                        <label style="font-weight: bold;"> Digite o CPF para Iniciar a Sua Solicitação
                                             <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf"
-                                                onkeydown="mudarMascara(this.value)"  value="" required />
+                                                onkeydown="mudarMascara(this.value)" value="326.890.658-35" required />
                                         </label>
 
                                         <input type="submit" class="button succes" href="#" onclick="consultarCPF($('#cpf').val(),0 )"
                                             style="width: 100%;" value="Consultar">
 
 
-                                            <a   class="button succes" href="logar.php" 
-                                            style="width: 100%; background-color:rgb(10, 47, 67); font-weight: 400;"  >Acesso Corporativo </a>
+                                        <a class="button succes" href="logar.php"
+                                            style="width: 100%; background-color:rgb(10, 47, 67); font-weight: 400;">Acesso Corporativo </a>
                                         <br>
                                     </form>
                                 </div>
 
                             </div>
 
-
+                            <!-- login completo com usuario e senha-->
                             <div class=" grid-x grid-padding-x" id="logarCompleto">
 
                                 <div class="small-12 large-12 cell">
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
-                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf"   readonly />
+                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
                                         </label>
 
                                         <label style="font-weight: bold;"> Digite sua senha para acessar!
@@ -224,7 +229,7 @@ include_once 'includes/head.php';
                                             style="width: 100%;" value="Acessar o sistema">
 
 
-                                             <a  class="button succes" href="esqueciSenha.php"  style="width: 100%; color: white;  background-color:rgb(17, 140, 115);">Esqueci Minha Senha</a>
+                                        <a class="button succes" href="esqueciSenha.php" style="width: 100%; color: white;  background-color:rgb(17, 140, 115);">Esqueci Minha Senha</a>
                                         <br>
                                     </form>
                                 </div>
@@ -232,26 +237,9 @@ include_once 'includes/head.php';
                             </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                            <!-- segundo formulario, consulta cadastra o usuario -->
+                            <!-- segundo formulario, tela para cadastrar identificado completo -->
                             <div class="grid-x grid-padding-x" id="nomeUsuario">
 
-
-
-
- 
-  
                                 <div class="small-12 large-12 cell" style="display: show;" id="camposAgendamentos">
                                     <label style="font-weight: bold; font-size: 1.3em;"> Vamos continuar seu agendamento! Digite seu nome
                                         <input type="text" placeholder="Digite aqui seu Aqui" class="nomeAgendamento"
@@ -298,9 +286,11 @@ include_once 'includes/head.php';
                                         para Agendamento</a>
                                     <br>
                                 </div>
+
+
                             </div>
 
-                            
+
 
 
                             <!-- aqui faz o agendamento -->
@@ -381,7 +371,7 @@ include_once 'includes/head.php';
 
 
 
- 
+
 
 
                         </div>
@@ -401,7 +391,7 @@ include_once 'includes/head.php';
 
                     ?>
 
-                        <br>
+                    <br>
 
                     <div class="grid-x grid-padding-x">
 
@@ -444,6 +434,30 @@ include_once 'includes/head.php';
 
     </div>
 
+    <div class="grid-x grid-padding-x" id="containerCadastraSolicitacao" style="display: none ;height: 90vh; background-color:rgb(216, 216, 219); margin: 30px; ">
+
+
+        <iframe
+            src="https://www.guarulhos.sp.gov.br/cartadeservicos"
+            title="Example Website"
+            frameborder="0"
+            allowfullscreen>
+        </iframe>
+
+        <?php
+
+
+
+
+
+
+
+        include 'telaSolicitacao.php'
+
+        ?>
+
+    </div>
+
 
 
 
@@ -462,11 +476,41 @@ include_once 'includes/head.php';
             $('.agendaCompleto').hide();
             $('#logarCompleto').hide();
 
+            <?php
+
+
+
+            if (isset($_SESSION['condicao']) &&  $_SESSION['condicao'] == 1) {
+                echo 'persist(1)';
+            } else {
+                echo 'persist(0)';
+            }
+
+
+            ?>
+
+
+
 
         })
 
 
+        function persist(condicao) {
+
+            if (condicao == 1) {
+                $('#containerCadastro').fadeOut(200).promise().done(function() {
+                    setTimeout(() => {
+                        $('#containerCadastraSolicitacao').fadeIn(1000);
+                    }, 50)
+                });
+            } else {
+
+            }
+        }
+
         function consultarCPF(cpf, validador) {
+
+
 
             if (cpf.length == 0 || cpf.length == 1) {
                 alert('insira o seu cpf ou cnpj');
@@ -509,6 +553,7 @@ include_once 'includes/head.php';
                 .done(function(data) {
 
 
+                    console.log(data);
 
 
                     condicao = data.retornoCondicao.condicao;
@@ -520,7 +565,7 @@ include_once 'includes/head.php';
 
                         $('#camposAgendamentos').show()
 
-                         $('.agendaCompleto').show()
+                        $('.agendaCompleto').show()
 
 
 
@@ -531,7 +576,11 @@ include_once 'includes/head.php';
 
 
 
+
+
+                        //verificou se o cara é um usuario cadastrao para o completo e ai abre pra vir a senha
                         if (data.retornoCondicao.dados[0].validaTipoCadastro == 1) {
+
 
 
                             $('#loginCPF').hide();
@@ -541,12 +590,14 @@ include_once 'includes/head.php';
 
                             $('#exibirCpf').val(cpf);
 
- 
+
+
 
 
 
                         } else {
-                            
+                            alert('sd');
+
                         }
 
 
@@ -588,9 +639,19 @@ include_once 'includes/head.php';
                         $('#senhaTxt').val("");
 
                     } else {
+
+
+
+                        $('#containerCadastro').fadeOut(200).promise().done(function() {
+                            setTimeout(() => {
+                                $('#containerCadastraSolicitacao').fadeIn(1000);
+                            }, 50)
+
+                        });
                         //condição retornou true, então pode seguir para o agendamento. ta fa
 
 
+                        /*
                         $('#logarCompleto').hide();
 
                         $('#loginCPF').hide();
@@ -603,6 +664,7 @@ include_once 'includes/head.php';
 
                         comboUnidadesComum();
                         agendamentosAtivos(data.retornoCondicao.dados[0].idPessoas);
+                        */
                     }
                 });
 
@@ -687,7 +749,76 @@ include_once 'includes/head.php';
 
 
 
-     
+        function registrarAgendamento() {
+            var comboHorarios = $('.comboHorarios').val();
+            var selectUnidade = $('#selectUnidade').val();
+
+
+
+
+            if (selectUnidade != 0) {
+                if (comboHorarios != 0) {
+                    var formData = {
+                        registrarAgendamento: 1,
+                        idUsuario: $('#txtIdUsuario').val(),
+                        comboHorarios: comboHorarios,
+                        selectUnidade: selectUnidade,
+                        selectAgendamento: $('.selectTipoAgendamento').val(),
+                        idStatus: '3'
+                    };
+                    var condicao;
+                    $.ajax({
+                            type: 'POST',
+                            url: 'ajax/agendamentoController.php',
+                            data: formData,
+                            dataType: 'json',
+                            encode: true
+                        })
+                        .done(function(data) {
+
+                            console.log(data);
+
+                            if (data.retorno == true) {
+                                $('#formularioAgendamento').hide();
+                                $('#modalSucesso').foundation('open');
+
+
+                                var nomeString = $('.comboHorarios').val()
+                                var resultadoEspaco = nomeString.split(" ");
+                                console.log(resultadoEspaco);
+
+
+
+
+
+
+
+                                $('.protocoloAgendamento').html('Seu Atendimento será às  ' + $('.comboHorarios')
+                                    .val());
+                                agendamentosAtivos($('#txtIdUsuario').val());
+
+
+
+
+
+                                $('#nomeNoticia').html($('#txtNome').val())
+
+                                //txtNome
+
+                                //cpf
+
+
+                            }
+                        });
+                    event.preventDefault();
+                } else {
+                    alert("Você deve selecionar um horário para seu atendimento");
+                }
+            } else {
+                alert("Você deve selecionar uma unidade para seu atendimento");
+            }
+        }
+
 
 
 

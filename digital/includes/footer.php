@@ -14,8 +14,11 @@
 
 <script>
     $(function() {
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
         $(".datepicker").datepicker({
-            maxDate:  30,
+            maxDate: 30,
             minDate: 0,
             showOn: "focus",
             dateFormat: "dd/mm/yy",
@@ -26,7 +29,7 @@
 
 
         $(".datepickerReport").datepicker({
-          
+
             showOn: "focus",
             dateFormat: "dd/mm/yy",
             dayNames: ["Domingo", "Segunda", "Terça", "Quarte", "Quinta", "Sexta", "Sábado"],
@@ -34,6 +37,28 @@
             monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
         });
     });
+
+
+    function criaCombo(containner) {
+        var formData = {
+            
+        };
+        $.ajax({
+                type: 'POST',
+                url: 'ajax/solicitaServicosComboController.php',
+                data: formData,
+                dataType: 'html',
+                encode: true
+            })
+            .done(function(data) {
+                console.log(data);
+                $('#comboServicos').html(data);
+               
+            });
+    }
+
+
+
 
     function mudarMascara(cpf) {
 
@@ -48,7 +73,7 @@
     }
 
 
-    
+
 
 
     function validaCPF(strCPF) {
@@ -110,11 +135,6 @@
 
         return true
     }
-
-
-
-
-
 </script>
 
 
