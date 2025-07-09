@@ -268,8 +268,8 @@ include_once 'includes/head.php';
 
 
                                 <div class="small-12 large-12 cell" style="display: none;" id="camposAgendamentos">
-                                    <label style="font-weight: bold; font-size: 1.3em;"> Vamos continuar seu agendamento! Digite seu nome
-                                        <input type="text" placeholder="Digite aqui seu Aqui" class="nomeAgendamento"
+                                    <label style="font-weight: bold; font-size: 1.3em;"> Vamos continuar seu agendamento! Digite seu Nome Completo
+                                        <input type="text" placeholder="Digite o Nome Completo Aqui" class="nomeAgendamento"
                                             id="nomeAgendamento" />
                                     </label>
 
