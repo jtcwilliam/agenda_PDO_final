@@ -15,6 +15,7 @@ class Arquivo
 
     private $pdoConn;
 
+
     function __construct()
     {
         include_once 'conecaoPDO.php';
@@ -27,15 +28,14 @@ class Arquivo
         $this->setPdoConn($objbanco);
     }
 
- 
-     public function  gerarArquivo()
+    public function  gerarArquivo()
     {
         try {
-            
+
             $pdo = $this->getPdoConn();
 
-            $stmt = $pdo->prepare(" select arquivo from arquivos where idarquivo = 13 ");
-                                        
+            $stmt = $pdo->prepare(" select arquivo from arquivos where idarquivo = 21 ");
+
 
             $stmt->execute();
 
@@ -45,12 +45,11 @@ class Arquivo
 
 
             return $datasDisponiveis;
-             
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
- 
+
 
     public function  inserirArquivos()
     {
@@ -60,15 +59,15 @@ class Arquivo
 
             //$pdo = new PDO("mysql:host='" . $host . "' ;dbname='" . $db . "', '" . $user, $password);
             //    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            $arquivo =   $this->getArquivo();           
-
+            $arquivo =   $this->getArquivo();
             $stmt = $pdo->prepare("  INSERT INTO  arquivos ( arquivo   )   values (?) ");
 
             $stmt->bindParam(1,  $arquivo);
 
-           // $stmt->bind_param('ss',  $this->getArquivo(), 1);
-          
+
+
+
+
 
             if ($stmt->execute()) {
                 return true;
@@ -78,6 +77,8 @@ class Arquivo
         }
     }
 
+
+  
 
 
 
@@ -182,7 +183,7 @@ class Arquivo
 
     /**
      * Get the value of arquivo
-     */ 
+     */
     public function getArquivo()
     {
         return $this->arquivo;
@@ -192,7 +193,7 @@ class Arquivo
      * Set the value of arquivo
      *
      * @return  self
-     */ 
+     */
     public function setArquivo($arquivo)
     {
         $this->arquivo = $arquivo;

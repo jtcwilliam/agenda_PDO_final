@@ -18,18 +18,12 @@
               ini_set('display_errors',1);
   ini_set('display_startup_erros',1);
   error_reporting(E_ALL);
-               
-
-    include_once './classes/arquivo.php';
-
-    $objArquivo = new Arquivo();
-
-    $arquivo = $objArquivo->gerarArquivo();
+            
          
 
 
 
-   echo '<img  style= "height: 100vh"src="data:image/png;base64,'.base64_encode($arquivo[0]['arquivo']).'"/>';
+   // echo '<img  style= "height: 100vh"src="data:image/png;base64,'.base64_encode($arquivo[0]['arquivo']).'"/>';
 
               
  
