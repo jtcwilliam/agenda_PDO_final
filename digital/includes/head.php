@@ -35,6 +35,34 @@
         .reveal-overlay {
             background-color: rgba(10, 10, 10, 0.9)
         }
+ 
+
+        .responsive-combobox {
+            width: 100%;
+            max-width: 400px;
+            /* Limite máximo de largura */
+            margin: 0 auto;
+            /* Centraliza o ComboBox */
+        }
+
+        .responsive-combobox select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #fff;
+            appearance: none;
+            /* Remove estilo padrão do navegador */
+        }
+
+        @media (max-width: 768px) {
+            .responsive-combobox select {
+                font-size: 14px;
+                /* Ajusta o tamanho da fonte em telas menores */
+            }
+        }
     </style>
 
 

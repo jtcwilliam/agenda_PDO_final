@@ -22,5 +22,5 @@ foreach ($dados as $key => $value) {
     }
 
 
-    echo '<option value=' . $value['idlinkCartaServico'] . '  >' . $descricao . '</option>';
+    echo '<option value=' . $value['linkCarta'] . '  >' . $descricao . '</option>';
 }

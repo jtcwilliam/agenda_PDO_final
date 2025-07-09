@@ -14,6 +14,34 @@ session_start();
 
     <!-- modais de informação sucesso cadastrado -->
 
+
+    <!-- duvida sobre Servicos -->
+    <div class="   small reveal" id="modalDuvidasCartas" data-reveal style="background-color:rgb(216, 216, 219);">
+        <div style="display: grid;  justify-content: center; align-content: center;  padding-top: 0px;">
+            <center style="color: black;">
+                <h4>
+                    <a target="_blank" style="color: black;" id="linkHelpServico">Ola! Se você tem alguma dúvida sobre os procedimentos ou qual
+                        documentação será necessária para realizar a solicitação "<b><i><span style="color:#28536b" id='codigoSolicitacao'></span></i> </b>" <br>
+                        <b><i>clique aqui</i></b> e você
+                        será redirecionado para a carta de serviços da prefeitura. Após retirar suas dúvidas, volte aqui para realizar sua solicitação!
+                    </a>
+
+
+                    <br>
+
+                    <br>
+
+                    <a class="button sucess" data-close aria-label="Close modal" target="_blank"> Clique aqui para Fechar esta Janela!</a>
+
+                </h4>
+
+            </center>
+        </div>
+
+    </div>
+    <!-- fim dos modais -->
+
+
     <div class="full reveal" id="usuarioInserido" data-reveal style="background-color:#2C255B;">
         <div style="display: grid;  justify-content: center; align-content: center; height: 100vh; padding-top: 0px;">
             <center style="color: white;">
@@ -437,12 +465,7 @@ session_start();
     <div class="grid-x grid-padding-x" id="containerCadastraSolicitacao" style="display: none ;height: 90vh; background-color:rgb(216, 216, 219); margin: 30px; ">
 
 
-        <iframe
-            src="https://www.guarulhos.sp.gov.br/cartadeservicos"
-            title="Example Website"
-            frameborder="0"
-            allowfullscreen>
-        </iframe>
+
 
         <?php
 
