@@ -351,7 +351,7 @@ include_once 'includes/head.php';
                                 </div>
 
                                 <div class="small-12 cell large-12">
-                                    <a target="_self" href="http://localhost/maisDigital">
+                                    <a target="_self" href="https://agendafacil.guarulhos.sp.gov.br/maisDigital">
                                         <p style="background-color: green; color: white; padding: 15px">
 
                                             Você sabia que você também pode solicitar esse serviço ONLINE? <br>

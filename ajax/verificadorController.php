@@ -18,7 +18,9 @@ $dadoUsuario = $objConsultar->pesquisarCPF($cpf);
 
 session_start();
 
-$_SESSION = $dadoUsuario;
+$_SESSION['usuariosLogados'] = $dadoUsuario;
+$_SESSION['usuariosLogados']['cpfDoUsuario'] = $_POST['cpf'];
+
 
 
 

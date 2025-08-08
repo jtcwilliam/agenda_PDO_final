@@ -35,7 +35,7 @@ class Conexao
                     
   
                
-                
+               /*      
                 $user ='dbagenddev';
                $pwd = 'Sge@4@5';
                $db = 'dbagenddev';
@@ -45,7 +45,7 @@ class Conexao
   
    
    
-    /*  
+     */ 
 
           
 
@@ -56,7 +56,7 @@ class Conexao
                  $host = 'akuma.guarulhos.sp.gov.br';
               
 
-                         */ 
+                     
   
              
 
