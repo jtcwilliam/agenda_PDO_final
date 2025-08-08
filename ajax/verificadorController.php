@@ -16,6 +16,12 @@ $cpf = md5($_POST['cpf']);
 
 $dadoUsuario = $objConsultar->pesquisarCPF($cpf);
 
+session_start();
+
+$_SESSION = $dadoUsuario;
+
+
+
 if (isset($_POST['esqueciSenha'])) {
 
 
@@ -23,12 +29,12 @@ if (isset($_POST['esqueciSenha'])) {
     date_default_timezone_set('America/Sao_Paulo');
 
     $dataVerificadora =  date('Y-m-d');
-    $dataVerificadora=  md5($dataVerificadora);
+    $dataVerificadora =  md5($dataVerificadora);
 
 
-      $nome = explode(' ', $dadoUsuario['dados']['0']['nomePessoa']);
+    $nome = explode(' ', $dadoUsuario['dados']['0']['nomePessoa']);
 
-            $nome = $nome[0];
+    $nome = $nome[0];
 
 
     if ($dadoUsuario['condicao'] == 1) {
@@ -49,25 +55,26 @@ if (isset($_POST['esqueciSenha'])) {
 
         <body style="font-family: Arial, Helvetica, sans-serif;">
             <center>
-                <h2>Olá <?=$nome?> .  Somos do Sistema Agenda Fácil da Prefeitura de Guarulhos </h2>
+                <h2>Olá <?= $nome ?> . Somos do Sistema Agenda Fácil da Prefeitura de Guarulhos </h2>
 
                 <h2>Você solicitou para alterar sua senha e vamos ajudá-lo por aqui. </h2>
 
 
                 <a style="color: green; text-decoration: none; font-style: italic;"
-                    href="https://agendafacil.guarulhos.sp.gov.br/redefinirSenha.php?verifyT=<?=$dataVerificadora ?>&dwp=<?=$dadoUsuario['dados']['0']['idPessoas'] ?>&slash=<?=md5($dadoUsuario['dados']['0']['idPessoas']) ?>  " target="_blank">
-                    <h2  >Clique aqui para alterar sua senha com segurança</h2>
+                    href="https://agendafacil.guarulhos.sp.gov.br/redefinirSenha.php?verifyT=<?= $dataVerificadora ?>&dwp=<?= $dadoUsuario['dados']['0']['idPessoas'] ?>&slash=<?= md5($dadoUsuario['dados']['0']['idPessoas']) ?>  " target="_blank">
+                    <h2>Clique aqui para alterar sua senha com segurança</h2>
                 </a>
                 <br>
 
-               <h4> Estamos á Disposição!<br>
+                <h4> Estamos á Disposição!<br>
 
-                <b>Equipe Agenda Fácil </b>
-                   <h2> Prefeitura de Guarulhos</h2></h4>
+                    <b>Equipe Agenda Fácil </b>
+                    <h2> Prefeitura de Guarulhos</h2>
+                </h4>
 
-                 
 
-                
+
+
 
             </center>
         </body>
@@ -90,12 +97,12 @@ if (isset($_POST['esqueciSenha'])) {
         if ($objEnvio->envioEmail()) {
 
 
-          
+
             echo json_encode(array('retorno' => true, 'nome' => ucfirst($nome)));
             exit();
         } else {
             echo json_encode(array('retorno' => false));
-           
+
             exit();
         }
     }
