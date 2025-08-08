@@ -138,7 +138,7 @@ if (
             function consultarDados(pesquisa) {
 
 
-                alert(pesquisa);
+             
 
                 var formData = {
                     analiseDeDias: 1,

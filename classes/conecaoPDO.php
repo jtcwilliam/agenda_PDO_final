@@ -9,10 +9,6 @@ class Conexao
     private $host;
     private $pdoConn;
 
-
-
-
-
     public function Conectar()
     {
         try {/*
@@ -37,19 +33,19 @@ class Conexao
 
   //  servidor desenvolvimento
                     
-  /*
-                   
-                
+  
+               
+             /*       
                 $user ='dbagenddev';
                $pwd = 'Sge@4@5';
                $db = 'dbagenddev';
                $host = 'dbagenddev.mysql.dbaas.com.br';
 
             
-  */
+  
    
    
-     
+      */ 
 
           
 
@@ -58,7 +54,7 @@ class Conexao
                  $pwd = 'agendaf';
                  $db = 'agendaf';
                  $host = 'akuma.guarulhos.sp.gov.br';
-                
+              
 
                      
   

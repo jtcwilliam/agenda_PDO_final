@@ -180,15 +180,15 @@ include_once 'includes/head.php';
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
                                             <input type="text" placeholder="Digite aqui seu CPF" class="cpf" id="cpf"
-                                                onkeydown="mudarMascara(this.value)"  value="" required />
+                                                onkeydown="mudarMascara(this.value)" value="" required />
                                         </label>
 
                                         <input type="submit" class="button succes" href="#" onclick="consultarCPF($('#cpf').val(),0 )"
                                             style="width: 100%;" value="Consultar">
 
 
-                                            <a   class="button succes" href="logar.php" 
-                                            style="width: 100%; background-color:rgb(10, 47, 67); font-weight: 400;"  >Acesso Corporativo </a>
+                                        <a class="button succes" href="logar.php"
+                                            style="width: 100%; background-color:rgb(10, 47, 67); font-weight: 400;">Acesso Corporativo </a>
                                         <br>
                                     </form>
                                 </div>
@@ -201,7 +201,7 @@ include_once 'includes/head.php';
                                 <div class="small-12 large-12 cell">
                                     <form action="#">
                                         <label style="font-weight: bold;"> Digite o CPF para Iniciar o Agendamento
-                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf"   readonly />
+                                            <input type="text" placeholder="Digite aqui seu CPF" id="exibirCpf" readonly />
                                         </label>
 
                                         <label style="font-weight: bold;"> Digite sua senha para acessar!
@@ -212,7 +212,7 @@ include_once 'includes/head.php';
                                             style="width: 100%;" value="Acessar o sistema">
 
 
-                                             <a  class="button succes" href="esqueciSenha.php"  style="width: 100%; color: white;  background-color:rgb(17, 140, 115);">Esqueci Minha Senha</a>
+                                        <a class="button succes" href="esqueciSenha.php" style="width: 100%; color: white;  background-color:rgb(17, 140, 115);">Esqueci Minha Senha</a>
                                         <br>
                                     </form>
                                 </div>
@@ -268,8 +268,8 @@ include_once 'includes/head.php';
 
 
                                 <div class="small-12 large-12 cell" style="display: none;" id="camposAgendamentos">
-                                    <label style="font-weight: bold; font-size: 1.3em;"> Vamos continuar seu agendamento! Digite seu nome
-                                        <input type="text" placeholder="Digite aqui seu Aqui" class="nomeAgendamento"
+                                    <label style="font-weight: bold; font-size: 1.3em;"> Vamos continuar seu agendamento! Digite seu Nome Completo
+                                        <input type="text" placeholder="Digite o Nome Completo Aqui" class="nomeAgendamento"
                                             id="nomeAgendamento" />
                                     </label>
 
@@ -347,6 +347,15 @@ include_once 'includes/head.php';
                                     <label> Nome </label>
 
                                     <input type="text" name="txtNome" id="txtNome" value="" readonly />
+
+                                </div>
+
+                                <div class="small-12 cell large-12">
+                                    <p style="background-color: green; color: white; padding: 15px">
+
+                                        VOCÊ TERÁ APENAS UMA OPORTUNIDADE DE AGENDAMENTO, CASO NÃO COMPAREÇA NO DIA E HORÁRIO AGENDADO, TERÁ QUE SE DESLOCAR A UMA UNIDADE DO FACIL PARA <b>REAGENDAR!</b>
+
+                                    </p>
 
                                 </div>
 
@@ -438,7 +447,7 @@ include_once 'includes/head.php';
 
                     ?>
 
-                        <br>
+                    <br>
 
                     <div class="grid-x grid-padding-x">
 

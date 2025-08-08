@@ -118,7 +118,7 @@ include_once 'includes/head.php'
 
                         window.setTimeout(() => {
                             window.location = endereco;
-                        }, 3600);
+                        }, 1200);
 
                     }
 

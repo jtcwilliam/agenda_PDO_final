@@ -307,7 +307,7 @@
 
 
                 //aqui muda as datas
-                if (data.qtdeAgendamentos >= 2) {
+                if (data.qtdeAgendamentos >= 1) {
                     $('#formularioAgendamento').hide();
                     $('#campoMensagemAgendamentosAtivos').show();
 

@@ -86,7 +86,7 @@ if ($_SESSION['usuarioLogado']['dados'][0]['idTipoPessoa'] != 4) {
 
                 <!-- liberação de datas para agendamento -->
                 <fieldset class="fieldset">
-                    <legend> <label>Criar Horários para Atendimento</label></legend>
+                    <legend> <label>Criar Horários para ---Atendimento</label></legend>
 
                     <form action="#">
                         <div class="grid-x grid-padding-x">
